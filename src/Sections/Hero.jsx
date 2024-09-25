@@ -9,7 +9,7 @@ const Hero = () => (
       </p>
 
       <div className="w-full h-full absolute inset-0">
-
+        
       </div>
     </div>
   </section>
