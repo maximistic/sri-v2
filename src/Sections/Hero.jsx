@@ -1,6 +1,6 @@
-import { PerspectiveCamera } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import Setup from "../Components/Setup";
+// import { PerspectiveCamera } from "@react-three/drei";
+// import { Canvas } from "@react-three/fiber";
+// import Setup from "../Components/Setup";
 
 const Hero = () => (
   <section className="min-h-screen w-full flex flex-col relative">
@@ -12,12 +12,12 @@ const Hero = () => (
         Breaking and Building Stuff
       </p>
 
-      <div className="w-full h-full absolute inset-0">
+      {/* <div className="w-full h-full absolute inset-0">
         <Canvas className="w-full h-full">
           <PerspectiveCamera makeDefault position={[0,0,30]}/>
           <Setup/>
         </Canvas>
-      </div>
+      </div> */}
     </div>
   </section>
 );
