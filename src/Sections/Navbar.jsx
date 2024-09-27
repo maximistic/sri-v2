@@ -1,15 +1,20 @@
 import { useState } from 'react';
-
 import { navLinks } from '../constants/index.js';
 
 // eslint-disable-next-line react/prop-types
 const NavItems = ({ onClick = () => {} }) => (
-  <ul className="nav-ul">
+  <ul className="nav-ul flex gap-8">
     {navLinks.map((item) => (
-      <li key={item.id} className="nav-li">
-        <a href={item.href} className="nav-li_a" onClick={onClick}>
+      <li key={item.id} className="nav-li relative group">
+        <a
+          href={item.href}
+          className="nav-li_a relative z-10 px-3 py-2 text-neutral-400 font-medium text-lg transition-transform duration-300 ease-out group-hover:text-white group-hover:scale-110"
+          onClick={onClick}
+        >
           {item.name}
         </a>
+        {/* Floating background */}
+        <div className="absolute -inset-1 z-0 bg-gradient-to-r from-neutral-400 to-white-700 opacity-0 rounded-lg transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-110"></div>
       </li>
     ))}
   </ul>
