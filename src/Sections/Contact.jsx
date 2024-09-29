@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { BackgroundBeamsWithCollision } from '../Components/ui/background-beams-with-collision';
 
 const Contact = () => {
     const formRef = useRef();
@@ -37,6 +38,7 @@ const Contact = () => {
     };
 
     return (
+        <BackgroundBeamsWithCollision>
         <div className="bg-black min-h-screen flex items-center justify-center p-4 md:p-8 lg:p-16">
             <div className="w-full max-w-4xl bg-[#111111] rounded-lg shadow-xl overflow-hidden">
                 {/* Mac-style buttons */}
@@ -100,6 +102,7 @@ const Contact = () => {
                 </div>
             </div>
         </div>
+        </BackgroundBeamsWithCollision>
     );
 };
 

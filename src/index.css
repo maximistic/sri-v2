@@ -158,6 +158,15 @@ body {
   transform-origin: 70% 70%;
   display: inline-block;
 }
+canvas#starry-sky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none; /* Prevent canvas from blocking interactions */
+}
 
 .arrow-gradient {
   background-image: linear-gradient(
