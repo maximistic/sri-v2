@@ -3,7 +3,7 @@ import React, { useEffect, useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "../lib/utils";
-import { SparklesCore } from "./sparkles";
+import { SparklesCore } from "../ui/sparkles";
 
 export const Cover = ({
   children,
@@ -35,7 +35,7 @@ export const Cover = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       ref={ref}
-      className="relative hover:bg-neutral-900  group/cover inline-block dark:bg-neutral-900 bg-neutral-100 px-2 py-2  transition duration-200 rounded-sm">
+      className="relative hover:bg-neutral-900 group/cover inline-block dark:bg-neutral-900 bg-neutral-900 px-2 py-2  transition duration-200 rounded-sm">
       <AnimatePresence>
         {hovered && (
           <motion.div
@@ -122,7 +122,7 @@ export const Cover = ({
           },
         }}
         className={cn(
-          "dark:text-white inline-block text-neutral-900 relative z-20 group-hover/cover:text-white transition duration-200",
+          "dark:text-white inline-block text-slate-200 relative z-20 group-hover/cover:text-white transition duration-200",
           className
         )}>
         {children}

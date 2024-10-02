@@ -1,3 +1,5 @@
+
+import {Cover} from "../Components/ui/cover";
 const Hero = () => {
   console.log("Rendering Hero component"); // Log to ensure the Hero is rendering
 
@@ -8,7 +10,7 @@ const Hero = () => {
           Hey There <span className="waving-hand">👋</span> Sri Here
         </p>
           <p className="hero_tag text-gray_gradient">
-             Breaking and Building Stuff
+             <Cover> Breaking and Building Stuff</Cover>
           </p>
       </div>
     </section>

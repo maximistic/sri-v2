@@ -1,7 +1,7 @@
 import MyGlobe from "./MyGlobe";
 import Button from "../Components/Button.jsx";
-// import SpotlightButton from "../Components/SpotlightButton.jsx";
 import { useState } from "react";
+
 const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
     const handleCopy = () => {
@@ -46,7 +46,6 @@ const About = () => {
                         <p className="grid-headtext">Working Across Time Zones</p>
                         <p className="grid-subtext">Based in <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-[#FF9933] via-white to-[#138808]">INDIA</span>, working across Time Zones! </p>
                         <Button name="Get in touch" isBeam containerClass="w-full mt-10"/>
-                        {/* <SpotlightButton /> */}
                     </div>
                 </div>
             </div>
