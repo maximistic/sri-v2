@@ -12,3 +12,6 @@ Currently, two official plugins are available:
     - git init
     - git remote add origin https://github.com/maximistic/Sri-Portfolio2.git
     - git add .
+    - git commit -m "msg"
+    - git push --set-upstream origin main
+    - create nextjs.yml (in the website - github actions/configure next.js)
