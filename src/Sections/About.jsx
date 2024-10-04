@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import MyGlobe from "./MyGlobe";
 import Button from "../Components/Button.jsx";
-import { cn } from "../Components/lib/utils.js";
 
 const About = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
