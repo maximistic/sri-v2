@@ -4,7 +4,7 @@ import About from './Sections/About.jsx';
 import Contact from './Sections/Contact.jsx';
 import Footer from './Sections/Footer.jsx';
 import Experience from './Sections/Experience.jsx';
-// import Tech from './Sections/Tech.jsx';
+import Projects from './Sections/Projects.jsx';
 
 const App = () => {
   return (
@@ -13,10 +13,10 @@ const App = () => {
 
       <Hero/>
       <About />
-      {/* <Tech /> */}
       <Experience />
-      <Contact />
+      <Projects />
 
+      <Contact />
       <Footer />
     </main>
   )
