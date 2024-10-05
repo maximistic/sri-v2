@@ -17,13 +17,13 @@ const About = () => {
 
   const cards = [
     {
-      image: "public/assets/grid1.png",
+      image: "src/Assets/grid1.png",
       title: "Hey there, I am Sri!",
       description: "A Fresher, entering the Tech World with a passion for Web Development and Machine Learning, with focus on real world impact.",
       span: "xl:row-span-3",
     },
     {
-      image: "public/assets/grid2.png",
+      image: "src/Assets/grid2.png",
       title: "Tech Stack",
       description: "I specialize in JavaScript/TypeScript with a focus on React Js & Next Js and ML frameworks such as Tensorflow, PyTorch, Scikit Learn.",
       span: "xl:row-span-3",
@@ -44,7 +44,7 @@ const About = () => {
       span: "xl:col-span-1 xl:row-span-4",
     },
     {
-      image: "public/assets/grid3.png",
+      image: "src/Assets/grid3.png",
       title: "My Passion For Coding",
       description: "With a keen eye for perfection, I am constantly seeking ways to improve my skills and stay up-to-date with the latest trends.",
       span: "xl:col-span-2 xl:row-span-3",
@@ -52,7 +52,7 @@ const About = () => {
     {
       customContent: (
         <>
-          <img src="public/assets/grid4.png" alt="grid-4" className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top"/>
+          <img src="src/Assets/grid4.png" alt="grid-4" className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top"/>
           <div className="space-y-2">
             <p className="grid-subtext text-center">Contact Me</p> 
             <div className="copy-container" onClick={handleCopy}>
