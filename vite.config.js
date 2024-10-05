@@ -10,6 +10,7 @@ export default defineConfig({
         main: './index.html',
         404: './404.html',
       },
+      external: ['@react-three/fiber'],
     },
   },
   plugins: [react()],
