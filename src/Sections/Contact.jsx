@@ -51,9 +51,9 @@ const Contact = () => {
                 </div>
 
                 <div className="p-8 md:p-12 lg:p-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Connect with me</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Let's Connect</h2>
                     <p className="text-gray-400 mb-10 text-lg md:text-xl">
-                        Whether you are looking to build something new or just want to say hi, I'd love to hear from you.
+                        Whether you are looking to build something new or just wanna say hi, I'd love to hear from you.
                     </p>
 
                     <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
