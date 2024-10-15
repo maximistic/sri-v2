@@ -1,28 +1,28 @@
-import html from '../Assets/tech/html.png';
-import css from '../Assets/tech/css.png';
-import javascript from '../Assets/tech/javascript.png';
-import typescript from '../Assets/tech/typescript.png';
-import reactjs from '../Assets/tech/reactjs.png';
-import redux from '../Assets/tech/redux.png';
-import tailwind from '../Assets/tech/tailwind.png';
-import nodejs from '../Assets/tech/nodejs.png';
-import mongodb from '../Assets/tech/mongodb.png';
-import git from '../Assets/tech/git.png';
-import figma from '../Assets/tech/figma.png';
-import docker from '../Assets/tech/docker.png';
-import threejs from '../Assets/tech/threejs.svg';
+import html from '/tech/html.png';
+import css from '/tech/css.png';
+import javascript from '/tech/javascript.png';
+import typescript from '/tech/typescript.png';
+import reactjs from '/tech/reactjs.png';
+import redux from '/tech/redux.png';
+import tailwind from '/tech/tailwind.png';
+import nodejs from '/tech/nodejs.png';
+import mongodb from '/tech/mongodb.png';
+import git from '/tech/git.png';
+import figma from '/tech/figma.png';
+import docker from '/tech/docker.png';
+import threejs from '/tech/threejs.svg';
 
-import projectLogo1 from '../Assets/project-logo1.png';
-import projectLogo2 from '../Assets/project-logo2.png';
-import projectLogo3 from '../Assets/project-logo3.png';
-import projectLogo4 from '../Assets/project-logo4.png';
-import projectLogo5 from '../Assets/project-logo5.png';
+import projectLogo1 from '/project-logo1.png';
+import projectLogo2 from '/project-logo2.png';
+import projectLogo3 from '/project-logo3.png';
+import projectLogo4 from '/project-logo4.png';
+import projectLogo5 from '/project-logo5.png';
 
-import spotlight1 from '../Assets/spotlight1.png';
-import spotlight2 from '../Assets/spotlight2.png';
-import spotlight3 from '../Assets/spotlight3.png';
-import spotlight4 from '../Assets/spotlight4.png';
-import spotlight5 from '../Assets/spotlight5.png';
+import spotlight1 from '/spotlight1.png';
+import spotlight2 from '/spotlight2.png';
+import spotlight3 from '/spotlight3.png';
+import spotlight4 from '/spotlight4.png';
+import spotlight5 from '/spotlight5.png';
 
 
 export const navLinks = [
