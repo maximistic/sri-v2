@@ -1,28 +1,28 @@
-import html from '/tech/html.png';
-import css from '/tech/css.png';
-import javascript from '/tech/javascript.png';
-import typescript from '/tech/typescript.png';
-import reactjs from '/tech/reactjs.png';
-import redux from '/tech/redux.png';
-import tailwind from '/tech/tailwind.png';
-import nodejs from '/tech/nodejs.png';
-import mongodb from '/tech/mongodb.png';
-import git from '/tech/git.png';
-import figma from '/tech/figma.png';
-import docker from '/tech/docker.png';
-import threejs from '/tech/threejs.svg';
+import html from '/assets/tech/html.png';
+import css from '/assets/tech/css.png';
+import javascript from '/assets/tech/javascript.png';
+import typescript from '/assets/tech/typescript.png';
+import reactjs from '/assets/tech/reactjs.png';
+import redux from '/assets/tech/redux.png';
+import tailwind from '/assets/tech/tailwind.png';
+import nodejs from '/assets/tech/nodejs.png';
+import mongodb from '/assets/tech/mongodb.png';
+import git from '/assets/tech/git.png';
+import figma from '/assets/tech/figma.png';
+import docker from '/assets/tech/docker.png';
+import threejs from '/assets/tech/threejs.svg';
 
-import projectLogo1 from '/project-logo1.png';
-import projectLogo2 from '/project-logo2.png';
-import projectLogo3 from '/project-logo3.png';
-import projectLogo4 from '/project-logo4.png';
-import projectLogo5 from '/project-logo5.png';
+import projectLogo1 from '/assets/project-logo1.png';
+import projectLogo2 from '/assets/project-logo2.png';
+import projectLogo3 from '/assets/project-logo3.png';
+import projectLogo4 from '/assets/project-logo4.png';
+import projectLogo5 from '/assets/project-logo5.png';
 
-import spotlight1 from '/spotlight1.png';
-import spotlight2 from '/spotlight2.png';
-import spotlight3 from '/spotlight3.png';
-import spotlight4 from '/spotlight4.png';
-import spotlight5 from '/spotlight5.png';
+import spotlight1 from '/assets/spotlight1.png';
+import spotlight2 from '/assets/spotlight2.png';
+import spotlight3 from '/assets/spotlight3.png';
+import spotlight4 from '/assets/spotlight4.png';
+import spotlight5 from '/assets/spotlight5.png';
 
 
 export const navLinks = [
@@ -107,7 +107,7 @@ export const navLinks = [
     {
       title: "Content",
       company_name: "Content",
-      icon: 'https://unsplash.com/photos/the-letter-a-is-made-up-of-bright-lines-3wXrEK8h_pw',
+      icon: projectLogo1,
       iconBg: "#383E56",
       date: "March 2020 - April 2021",
       points: [
@@ -120,7 +120,7 @@ export const navLinks = [
     {
       title: "React Native Developer",
       company_name: "Content",
-      icon: 'https://unsplash.com/photos/the-letter-a-is-made-up-of-bright-lines-3wXrEK8h_pw',
+      icon: projectLogo2,
       iconBg: "#E6DEDD",
       date: "Jan 2021 - Feb 2022",
       points: [
@@ -133,7 +133,7 @@ export const navLinks = [
     {
       title: "Web Developer",
       company_name: "Content",
-      icon: 'https://unsplash.com/photos/the-letter-a-is-made-up-of-bright-lines-3wXrEK8h_pw',
+      icon: projectLogo3,
       iconBg: "#383E56",
       date: "Jan 2022 - Jan 2023",
       points: [
@@ -146,7 +146,7 @@ export const navLinks = [
     {
       title: "Full stack Developer",
       company_name: "Content",
-      icon: 'https://unsplash.com/photos/the-letter-a-is-made-up-of-bright-lines-3wXrEK8h_pw',
+      icon: projectLogo4,
       iconBg: "#E6DEDD",
       date: "Jan 2023 - Present",
       points: [
@@ -166,7 +166,7 @@ export const navLinks = [
       subdesc:
         'Built as a unique SAAS app with Next.js 14, Tailwind CSS, TypeScript and Framer Motion , Trendlens is your financial buddy to keep your financial performance in check.',
       href: 'https://www.youtube.com/watch?v=zfAb95tJvZQ',
-      texture: 'src/Assets/textures/project/project1.mp4',
+      texture: '/textures/project/project1.mp4',
       logo: projectLogo1, 
       logoStyle: {
         backgroundColor: '#2A1816',
@@ -175,10 +175,10 @@ export const navLinks = [
       },
       spotlight: spotlight1, 
       tags: [
-        { id: 1, name: 'React.js', path: 'src/Assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: 'src/Assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: 'src/Assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: 'src/Assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: '/assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: '/assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: '/assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: '/assets/tech/nodejs.png' },
       ],
     },
     {
@@ -187,7 +187,7 @@ export const navLinks = [
       subdesc:
         'With LiveDoc, users can experience the future of collaboration, where multiple contributors work together in real time without any lag, by using Next.js and Liveblocks newest features.',
       href: 'https://www.youtube.com/watch?v=y5vE8y_f_OM',
-      texture: 'src/Assets/textures/project/project2.mp4',
+      texture: '/textures/project/project2.mp4',
       logo: projectLogo2,  
       logoStyle: {
         backgroundColor: '#13202F',
@@ -196,10 +196,10 @@ export const navLinks = [
       },
       spotlight: spotlight2,  
       tags: [
-        { id: 1, name: 'React.js', path: ' src/Assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: ' src/Assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: ' src/Assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: ' src/Assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: ' /assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: ' /assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: ' /assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: ' /assets/tech/nodejs.png' },
       ],
     },
     {
@@ -208,7 +208,7 @@ export const navLinks = [
       subdesc:
         'With a focus on efficiency, CarePulse integrates complex forms and SMS notifications, by using Next.js, Appwrite, Twillio and Sentry that enhance operational workflows.',
       href: 'https://www.youtube.com/watch?v=lEflo_sc82g',
-      texture: 'src/Assets/textures/project/project3.mp4',
+      texture: '/textures/project/project3.mp4',
       logo: projectLogo3,  
       logoStyle: {
         backgroundColor: '#60f5a1',
@@ -219,10 +219,10 @@ export const navLinks = [
       },
       spotlight: spotlight3,  
       tags: [
-        { id: 1, name: 'React.js', path: ' src/Assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: ' src/Assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: ' src/Assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: ' src/Assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: '/assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: '/assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: ' /assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: ' /assets/tech/nodejs.png' },
       ],
     },
     {
@@ -231,7 +231,7 @@ export const navLinks = [
       subdesc:
         'Built with Next.js 14 Appwrite, Dwolla and Plaid, Horizon ensures a smooth and secure banking experience, tailored to meet the needs of modern consumers.',
       href: 'https://www.youtube.com/watch?v=PuOVqP_cjkE',
-      texture: 'src/Assets/textures/project/project4.mp4',
+      texture: '/textures/project/project4.mp4',
       logo: projectLogo4,  
       logoStyle: {
         backgroundColor: '#0E1F38',
@@ -240,10 +240,10 @@ export const navLinks = [
       },
       spotlight: spotlight4,  
       tags: [
-        { id: 1, name: 'React.js', path: ' src/Assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: ' src/Assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: ' src/Assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: ' src/Assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: ' /assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: ' /assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: ' /assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: ' /assets/tech/nodejs.png' },
       ],
     },
     {
@@ -252,7 +252,7 @@ export const navLinks = [
       subdesc:
         'Built with Next.js 14, Cloudinary AI, Clerk, and Stripe, Imaginify combines cutting-edge technology with a user-centric approach. It can be turned into a side income or even a full-fledged business.',
       href: 'https://www.youtube.com/watch?v=Ahwoks_dawU',
-      texture: 'src/Assets/textures/project/project5.mp4',
+      texture: '/textures/project/project5.mp4',
       logo: projectLogo5,  
       logoStyle: {
         backgroundColor: '#1C1A43',
@@ -261,14 +261,12 @@ export const navLinks = [
       },
       spotlight: spotlight5,  
       tags: [
-        { id: 1, name: 'React.js', path: ' src/Assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: 'src/Assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: ' src/Assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: 'src/Assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: ' assets/assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: '/assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: ' /assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: '/assets/tech/nodejs.png' },
       ],
     },
   ];
-  
-  
 
   export {experiences, technologies};
