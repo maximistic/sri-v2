@@ -52,7 +52,17 @@ const About = () => {
     {
       customContent: (
         <>
-          <img src="assets/grid4.png" alt="grid-4" className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top"/>
+          <div className="relative">
+            {/* Image Hover Animation */}
+            <motion.img
+              src="assets/grid4.png"
+              alt="grid-4"
+              className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top"
+              onMouseEnter={() => setHoveredIndex('last')} // Set to 'last' on hover
+              onMouseLeave={() => setHoveredIndex(null)} // Reset on mouse leave
+              animate={hoveredIndex === 'last' ? { scale: 1.05 } : { scale: 1 }} // Animate the image
+            />
+          </div>
           <div className="space-y-2">
             <p className="grid-subtext text-center">Contact Me</p> 
             <div className="copy-container" onClick={handleCopy}>
@@ -73,12 +83,13 @@ const About = () => {
           <div
             key={idx}
             className={`col-span-1 ${card.span}`}
-            onMouseEnter={() => setHoveredIndex(idx)}
-            onMouseLeave={() => setHoveredIndex(null)}
+            // Only set hoveredIndex for cards that are not the last one
+            onMouseEnter={() => idx !== 4 && setHoveredIndex(idx)}
+            onMouseLeave={() => idx !== 4 && setHoveredIndex(null)}
           >
             <div className="grid-container relative group overflow-hidden rounded-3xl shadow-lg">
               <AnimatePresence>
-                {hoveredIndex === idx && (
+                {hoveredIndex === idx && idx !== 4 && (
                   <motion.span
                     className="absolute inset-0 h-full w-full bg-neutral-900/70 dark:bg-slate-800/70 block"
                     layoutId="hoverBackground"
