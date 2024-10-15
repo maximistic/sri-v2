@@ -175,10 +175,10 @@ export const navLinks = [
       },
       spotlight: spotlight1, 
       tags: [
-        { id: 1, name: 'React.js', path: '/assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: '/assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: '/assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: '/assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: 'assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: 'assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: 'assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: 'assets/tech/nodejs.png' },
       ],
     },
     {
@@ -196,10 +196,10 @@ export const navLinks = [
       },
       spotlight: spotlight2,  
       tags: [
-        { id: 1, name: 'React.js', path: ' /assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: ' /assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: ' /assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: ' /assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: 'assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: 'assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: 'assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: 'assets/tech/nodejs.png' },
       ],
     },
     {
@@ -219,10 +219,10 @@ export const navLinks = [
       },
       spotlight: spotlight3,  
       tags: [
-        { id: 1, name: 'React.js', path: '/assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: '/assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: ' /assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: ' /assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: 'assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: 'assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: 'assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: 'assets/tech/nodejs.png' },
       ],
     },
     {
@@ -240,10 +240,10 @@ export const navLinks = [
       },
       spotlight: spotlight4,  
       tags: [
-        { id: 1, name: 'React.js', path: ' /assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: ' /assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: ' /assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: ' /assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: 'assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: 'assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: 'assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: 'assets/tech/nodejs.png' },
       ],
     },
     {
@@ -261,10 +261,10 @@ export const navLinks = [
       },
       spotlight: spotlight5,  
       tags: [
-        { id: 1, name: 'React.js', path: ' assets/assets/tech/reactjs.png' },
-        { id: 2, name: 'TailwindCSS', path: '/assets/tech/tailwind.png' },
-        { id: 3, name: 'TypeScript', path: ' /assets/tech/typescript.png' },
-        { id: 4, name: 'Framer Motion', path: '/assets/tech/nodejs.png' },
+        { id: 1, name: 'React.js', path: 'assets/tech/reactjs.png' },
+        { id: 2, name: 'TailwindCSS', path: 'assets/tech/tailwind.png' },
+        { id: 3, name: 'TypeScript', path: 'assets/tech/typescript.png' },
+        { id: 4, name: 'Framer Motion', path: 'assets/tech/nodejs.png' },
       ],
     },
   ];
