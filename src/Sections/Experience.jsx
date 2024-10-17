@@ -1,115 +1,212 @@
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
-import "react-vertical-timeline-component/style.min.css";
-import { experiences } from "../constants/index";
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform, useDragControls, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const ExperienceCard = ({ experience }) => {
+const certifications = [
+  {
+    id: 1,
+    title: 'React Developer Certification',
+    image: '/api/placeholder/300/200',
+    issuer: 'React University',
+    date: 'May 2023',
+    description: 'Advanced concepts in React development including hooks, context, and performance optimization.'
+  },
+  {
+    id: 2,
+    title: 'JavaScript Mastery Certificate',
+    image: '/api/placeholder/300/200',
+    issuer: 'JavaScript Institute',
+    date: 'January 2023',
+    description: 'Comprehensive understanding of JavaScript including ES6+, async programming, and functional concepts.'
+  },
+  {
+    id: 3,
+    title: 'Tailwind CSS Expert',
+    image: '/api/placeholder/300/200',
+    issuer: 'CSS Wizards Academy',
+    date: 'March 2023',
+    description: 'Mastery in building responsive and customized user interfaces using Tailwind CSS.'
+  },
+  {
+    id: 4,
+    title: 'Web Accessibility Specialist',
+    image: '/api/placeholder/300/200',
+    issuer: 'A11Y Foundation',
+    date: 'June 2023',
+    description: 'Expertise in creating inclusive web experiences and implementing WCAG guidelines.'
+  },
+];
+
+const Certifications = () => {
+  const [selectedCert, setSelectedCert] = useState(null);
+  const containerRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const dragControls = useDragControls();
+
+  const handleScroll = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      handleScroll();
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  const scroll = (direction) => {
+    if (containerRef.current) {
+      const scrollAmount = direction === 'left' ? -400 : 400;
+      containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const { scrollX } = useScroll({ container: containerRef });
+
   return (
-    <VerticalTimelineElement
-      contentStyle={{
-        background: "#1A1A1A",
-        color: "#fff",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        borderRadius: "12px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-      }}
-      contentArrowStyle={{ borderRight: "7px solid #1A1A1A" }}
-      date={
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-gray-400"
-        >
-          {experience.date}
-        </motion.div>
-      }
-      iconStyle={{ 
-        background: "#1A1A1A",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-      }}
-      icon={
-        <div className='flex justify-center items-center w-full h-full'>
-          <img
-            src={experience.icon}
-            alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain filter brightness-90'
-          />
-        </div>
-      }
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.3 }}
-        className="p-4 rounded-lg transition-all duration-300 hover:ring-2 hover:ring-green-500/50 hover:shadow-[0_0_15px_rgba(34,197,94,0.2)] cursor-default"
-      >
-        <h3 className='text-white text-[24px] font-bold group-hover:text-green-500 transition-colors duration-300'>
-          {experience.title}
-        </h3>
-        <p className='text-gray-400 text-[16px] font-semibold mt-1'>
-          {experience.company_name}
-        </p>
-
-        <motion.ul 
-          className='mt-5 list-disc ml-5 space-y-2'
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          {experience.points.map((point, index) => (
-            <motion.li
-              key={`experience-point-${index}`}
-              className='text-gray-300 text-[14px] pl-1 tracking-wider'
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              whileHover={{ x: 5 }}
-              transition={{ delay: 0.1 * index, duration: 0.3 }}
-            >
-              {point}
-            </motion.li>
-          ))}
-        </motion.ul>
-      </motion.div>
-    </VerticalTimelineElement>
-  );
-};
-
-const Experience = () => {
-  return (
-    <section className="relative z-0">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-green-900/10 via-transparent to-transparent" />
+    <div className="bg-black text-white min-h-screen overflow-hidden relative">
+      <h1 className="text-4xl font-bold text-center py-8">My Certifications</h1>
       
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative"
-      >
-        <p className='text-gray-400 text-[16px] uppercase tracking-wider text-center'>
-          What's up with me so far
-        </p>
-        <h2 className='text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-center mt-2'>
-          LIFE & WORK
-        </h2>
-      </motion.div>
+      <div className="relative px-16">
+        <button
+          onClick={() => scroll('left')}
+          className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black border border-white z-10
+            ${canScrollLeft ? 'opacity-100 hover:bg-gray-800' : 'opacity-30 cursor-not-allowed'}`}
+          disabled={!canScrollLeft}
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
 
-      <div className='mt-20 flex flex-col'>
-        <VerticalTimeline lineColor="rgba(255, 255, 255, 0.1)">
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-            />
-          ))}
-        </VerticalTimeline>
+        <div 
+          ref={containerRef}
+          className="flex overflow-x-scroll select-none"
+          style={{ 
+            overflowY: 'hidden',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch'
+          }}
+        >
+          <style jsx global>{`
+            /* Hide scrollbar for Chrome, Safari and Opera */
+            .overflow-x-scroll::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+          
+          <motion.div 
+            className="flex space-x-8 px-8"
+            drag="x"
+            dragControls={dragControls}
+            dragConstraints={containerRef}
+            dragElastic={0.1}
+            dragMomentum={false}
+            onDragStart={(e) => {
+              if (e.target.setPointerCapture) {
+                e.target.setPointerCapture(e.pointerId);
+              }
+            }}
+          >
+            {certifications.map((cert, index) => (
+              <CertCard 
+                key={cert.id}
+                cert={cert}
+                index={index}
+                scrollX={scrollX}
+                onClick={() => setSelectedCert(cert)}
+              />
+            ))}
+          </motion.div>
+        </div>
+
+        <button
+          onClick={() => scroll('right')}
+          className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black border border-white z-10
+            ${canScrollRight ? 'opacity-100 hover:bg-gray-800' : 'opacity-30 cursor-not-allowed'}`}
+          disabled={!canScrollRight}
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
-    </section>
+
+      <AnimatePresence>
+        {selectedCert && (
+          <CertModal cert={selectedCert} onClose={() => setSelectedCert(null)} />
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
-export default Experience;
+const CertCard = ({ cert, index, scrollX, onClick }) => {
+  const x = useTransform(scrollX, [index * 400, (index + 1) * 400], [0, -100]);
+  const scale = useTransform(scrollX, [index * 400, (index + 1) * 400], [1, 0.8]);
+  const rotate = useTransform(scrollX, [index * 400, (index + 1) * 400], [0, -10]);
+
+  return (
+    <motion.div 
+      className="flex-shrink-0 w-80 h-96 bg-black rounded-xl overflow-hidden cursor-pointer select-none
+        border border-white/30 transition-all duration-300"
+      style={{ x, scale, rotate, transformStyle: 'preserve-3d' }}
+      whileHover={{ 
+        scale: 1.05, 
+        rotateY: 5,
+        borderColor: 'rgb(34, 197, 94)',
+        borderWidth: '2px'
+      }}
+      onClick={onClick}
+    >
+      <img src={cert.image} alt={cert.title} className="w-full h-48 object-cover" draggable="false" />
+      <div className="p-6">
+        <h3 className="text-xl font-semibold mb-2">{cert.title}</h3>
+        <p className="text-sm text-gray-400">{cert.issuer} | {cert.date}</p>
+      </div>
+    </motion.div>
+  );
+};
+
+const CertModal = ({ cert, onClose }) => {
+  return (
+    <motion.div 
+      className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div 
+        className="bg-black rounded-xl overflow-hidden shadow-2xl max-w-2xl w-full m-4
+          border border-white/30"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+      >
+        <img src={cert.image} alt={cert.title} className="w-full h-64 object-cover" />
+        <div className="p-6">
+          <h2 className="text-3xl font-bold mb-2">{cert.title}</h2>
+          <p className="text-green-500 mb-4">
+            Issued by {cert.issuer} | {cert.date}
+          </p>
+          <p className="text-gray-300 mb-6">{cert.description}</p>
+          <div className="flex justify-between items-center">
+            <button 
+              className="bg-green-500 text-black py-2 px-6 rounded-lg font-semibold
+                hover:bg-green-600 transition-colors duration-300"
+              onClick={onClose}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default Certifications;

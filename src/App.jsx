@@ -6,6 +6,7 @@ import Footer from './Sections/Footer.jsx';
 import Experience from './Sections/Experience.jsx';
 import Projects from './Sections/Projects.jsx';
 import Tech from './Sections/Tech.jsx';
+import Certificates from './Sections/Certifications.jsx';
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
       <Experience />
       <Tech />
       <Projects />
-
+      <Certificates />
+      
       <Contact />
       <Footer />
     </main>
