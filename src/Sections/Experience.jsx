@@ -14,7 +14,7 @@ const ExperienceCard = ({ experience }) => {
         color: "#fff",
         border: "1px solid rgba(255, 255, 255, 0.1)",
         borderRadius: "12px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)", // Increased shadow for depth
       }}
       contentArrowStyle={{ borderRight: "7px solid #1A1A1A" }}
       date={
@@ -42,11 +42,11 @@ const ExperienceCard = ({ experience }) => {
       }
     >
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.3 }}
-        className="p-4 rounded-lg transition-all duration-300 hover:ring-2 hover:ring-green-500/50 hover:shadow-[0_0_15px_rgba(34,197,94,0.2)] cursor-default"
+        initial={{ opacity: 0, y: 20, scale: 0.95 }} // Initial scale for 3D effect
+        whileInView={{ opacity: 1, y: 0, scale: 1 }} // Scale to normal on view
+        whileHover={{ scale: 1.05, rotateY: 5 }} // Rotate on hover for 3D effect
+        transition={{ duration: 0.4 }}
+        className="p-4 rounded-lg transition-all duration-300 hover:ring-2 hover:ring-green-500/50 hover:shadow-lg cursor-pointer" // Change shadow on hover
       >
         <h3 className='text-white text-[24px] font-bold group-hover:text-green-500 transition-colors duration-300'>
           {experience.title}
@@ -67,7 +67,7 @@ const ExperienceCard = ({ experience }) => {
               className='text-gray-300 text-[14px] pl-1 tracking-wider'
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              whileHover={{ x: 5 }}
+              whileHover={{ x: 5 }} // Slightly move on hover
               transition={{ delay: 0.1 * index, duration: 0.3 }}
             >
               {point}
