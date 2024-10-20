@@ -7,6 +7,7 @@ import Experience from './Sections/Experience.jsx';
 import Projects from './Sections/Projects.jsx';
 import Tech from './Sections/Tech.jsx';
 import Certificates from './Sections/Certifications.jsx';
+import TechStacks from './Sections/TechStacks.jsx';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <About />
       <Experience />
       <Tech />
+      <TechStacks />
       <Projects />
       <Certificates />
       

@@ -10,7 +10,7 @@ const Hero = () => {
           Hey There <span className="waving-hand">👋</span> Sri Here
         </p>
           <p className="hero_tag text-gray_gradient">
-             <Cover> Breaking and Building Stuff</Cover>
+             <Cover className="cursor-none"> Breaking and Building Stuff</Cover>
           </p>
       </div>
     </section>

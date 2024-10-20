@@ -29,22 +29,32 @@ export const navLinks = [
   {
     id: 1,
     name: 'Home',
-    href: 'home',
+    href: '#',
   },
   {
     id: 2,
     name: 'About',
-    href: 'about',
+    href: '#',
   },
   {
     id: 3,
     name: 'Work',
-    href: 'work',
+    href: '#',
   },
   {
     id: 4,
+    name: 'Projects',
+    href: '#',
+  },
+  {
+    id: 5,
+    name: 'Certifications',
+    href: '#',
+  },
+  {
+    id: 6,
     name: 'Contact',
-    href: 'contact',
+    href: '#',
   },
 ];
 
@@ -312,4 +322,15 @@ const certifications = [
   },
 ];
 
-export {experiences, technologies, certifications};
+const techStack = [
+  { name: 'React JS', logo: 'assets/tech/reactjs.png' },
+  { name: 'Node JS', logo: 'assets/tech/nodejs.png' },
+  { name: 'Tailwind', logo: 'assets/tech/tailwind.png' },
+  { name: 'TypeScript', logo: 'assets/tech/typescript.png' },
+  { name: 'JavaScript', logo: 'assets/tech/javascript.png' },
+  { name: 'HTML', logo: 'assets/tech/html.png' },
+  { name: 'Three JS', logo: 'assets/tech/threejs.svg' },
+  { name: 'MongoDB', logo: 'assets/tech/mongodb.png' }
+];
+
+export {experiences, technologies, certifications, techStack};
