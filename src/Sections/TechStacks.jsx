@@ -1,135 +1,134 @@
 import { useState, useRef, useEffect } from 'react';
 import { techStack } from '../constants';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 const TechBall = ({ name, logo, index }) => {
   const ballRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [momentum, setMomentum] = useState({ x: 0, y: 0 });
-  const dragStart = useRef({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+
+  const springConfig = { stiffness: 150, damping: 15 };
+  const floatX = useSpring(useMotionValue(0), springConfig);
+  const floatY = useSpring(useMotionValue(0), springConfig);
 
   useEffect(() => {
-    // Add a smooth floating animation
     const randomOffset = Math.random() * Math.PI * 2;
-    const floatAnimation = setInterval(() => {
-      if (!isDragging) {
-        const time = Date.now() / 1000;
-        setPosition((prev) => ({
-          x: Math.sin(time + randomOffset) * 10,
-          y: Math.cos(time + randomOffset * 2) * 10,
-        }));
-      }
-    }, 16);
+    const floatAnimation = () => {
+      const time = Date.now() / 2000;
+      floatX.set(Math.sin(time + randomOffset) * 20);
+      floatY.set(Math.cos(time + randomOffset * 2) * 20);
+    };
 
-    return () => clearInterval(floatAnimation);
-  }, [isDragging]);
+    const intervalId = setInterval(floatAnimation, 16);
+    return () => clearInterval(intervalId);
+  }, [floatX, floatY]);
 
-  useEffect(() => {
-    // Apply momentum after dragging
-    if (!isDragging && (momentum.x !== 0 || momentum.y !== 0)) {
-      const momentumDecay = setInterval(() => {
-        setMomentum((prev) => ({
-          x: prev.x * 0.95,
-          y: prev.y * 0.95,
-        }));
-        setRotation((prev) => ({
-          x: prev.x + momentum.x,
-          y: prev.y + momentum.y,
-        }));
-      }, 16);
+  const handleMouseMove = (event) => {
+    const rect = ballRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const mouseX = event.clientX - centerX;
+    const mouseY = event.clientY - centerY;
 
-      return () => clearInterval(momentumDecay);
-    }
-  }, [isDragging, momentum]);
-
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    dragStart.current = { x: e.clientX, y: e.clientY };
+    rotateX.set(mouseY * -0.1);
+    rotateY.set(mouseX * 0.1);
   };
 
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      const deltaX = e.clientX - dragStart.current.x;
-      const deltaY = e.clientY - dragStart.current.y;
-
-      setRotation((prev) => ({
-        x: prev.x + deltaY * 0.5,
-        y: prev.y + deltaX * 0.5,
-      }));
-
-      setMomentum({
-        x: deltaX * 0.1,
-        y: deltaY * 0.1,
-      });
-
-      dragStart.current = { x: e.clientX, y: e.clientY };
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
+  const handleMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
   };
 
   return (
-    <div
+    <motion.div
       ref={ballRef}
-      className="relative group cursor-grab active:cursor-grabbing"
-      style={{
-        perspective: '1000px',
-        transform: `translate(${position.x}px, ${position.y}px)`,
-      }}
-      onMouseDown={handleMouseDown}
+      className="relative group cursor-pointer"
+      style={{ x: floatX, y: floatY }}
+      whileHover={{ scale: 1.2, zIndex: 10 }}
       onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
     >
-      <div
-        className={`w-20 h-20 rounded-full bg-black 
-          transition-transform duration-300 ease-out
-          border border-gray-500/30 hover:border-gray-300
-          shadow-lg hover:shadow-white/20
-          flex items-center justify-center
-          transform-gpu preserve-3d group-hover:scale-110
-        `}
+      <motion.div
+        className="w-24 h-24 rounded-full bg-gradient-to-br from-gray-900 to-gray-700 
+                   flex items-center justify-center shadow-lg"
         style={{
-          transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+          boxShadow: isHovered ? "0 0 20px rgba(255,255,255,0.3)" : "none",
         }}
       >
-        <img
+        <motion.img
           src={logo}
           alt={name}
-          className="w-12 h-12 object-contain"
+          className="w-16 h-16 object-contain"
+          initial={{ opacity: 0.7 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            filter: isHovered ? "drop-shadow(0 0 8px rgba(255,255,255,0.5))" : "none",
+          }}
           draggable="false"
         />
+      </motion.div>
 
-        {/* 3D reflection effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent via-transparent to-white/10" />
-
-        {/* Subtle glow effect */}
-        <div className="absolute inset-0 rounded-full bg-white/5 blur-sm" />
-      </div>
-
-      {/* Tech name */}
-      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <span className="text-gray-300 text-sm font-medium whitespace-nowrap">
+      <motion.div
+        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-center"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
+        transition={{ duration: 0.2 }}
+      >
+        <span className="text-gray-300 text-sm font-medium bg-gray-800 px-2 py-1 rounded-md">
           {name}
         </span>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
 const InteractiveTechStack = () => {
   return (
-    <div className="min-h-[400px] bg-black p-8 flex flex-col items-center justify-center overflow-hidden">
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-12 max-w-4xl">
+    <motion.div
+      className="min-h-[600px] bg-black p-12 flex flex-col items-center justify-center overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h2
+        className="text-3xl font-bold text-white mb-4"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        Technologies I Work With
+      </motion.h2>
+
+      <motion.p
+        className="text-gray-400 mt-0 mb-12 text-center max-w-2xl"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        These are just a few of the technologies I'm proficient in. I'm always eager to learn and adapt to new tools and frameworks to deliver the best solutions.
+      </motion.p>
+
+      <motion.div
+        className="grid grid-cols-3 md:grid-cols-5 gap-16 max-w-5xl"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+      >
         {techStack.map((tech, index) => (
           <TechBall key={tech.name} name={tech.name} logo={tech.logo} index={index} />
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
-
 export default InteractiveTechStack;
