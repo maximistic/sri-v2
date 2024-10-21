@@ -5,7 +5,6 @@ import Contact from './Sections/Contact.jsx';
 import Footer from './Sections/Footer.jsx';
 import Experience from './Sections/Experience.jsx';
 import Projects from './Sections/Projects.jsx';
-import Tech from './Sections/Tech.jsx';
 import Certificates from './Sections/Certifications.jsx';
 import TechStacks from './Sections/TechStacks.jsx';
 
@@ -17,7 +16,6 @@ const App = () => {
       <Hero/>
       <About />
       <Experience />
-      <Tech />
       <TechStacks />
       <Projects />
       <Certificates />
