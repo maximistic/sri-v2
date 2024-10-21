@@ -17,13 +17,13 @@ const About = () => {
 
   const cards = [
     {
-      image: "assets/grid1.png",
+      image: "assets/About/aboutG1.png",
       title: "Hey there, I am Sri!",
       description: "A Fresher, entering the Tech World with a passion for Web Development and Machine Learning, with focus on real world impact.",
       span: "xl:row-span-3",
     },
     {
-      image: "assets/grid2.png",
+      image: "assets/About/about3.jpg",
       title: "Tech Stack",
       description: "I specialize in JavaScript/TypeScript with a focus on React Js & Next Js and ML frameworks such as Tensorflow, PyTorch, Scikit Learn.",
       span: "xl:row-span-3",
@@ -44,7 +44,7 @@ const About = () => {
       span: "xl:col-span-1 xl:row-span-4",
     },
     {
-      image: "assets/grid3.png",
+      image: "assets/About/grid3.png",
       title: "My Passion For Coding",
       description: "With a keen eye for perfection, I am constantly seeking ways to improve my skills and stay up-to-date with the latest trends.",
       span: "xl:col-span-2 xl:row-span-3",
@@ -55,7 +55,7 @@ const About = () => {
           <div className="relative">
             {/* Image Hover Animation */}
             <motion.img
-              src="assets/grid4.png"
+              src="assets/About/grid4.png"
               alt="grid-4"
               className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top"
               onMouseEnter={() => setHoveredIndex('last')} // Set to 'last' on hover
