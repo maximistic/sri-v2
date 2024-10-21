@@ -90,12 +90,12 @@ const Experience = () => {
         transition={{ duration: 0.6 }}
         className="relative"
       >
-        <p className='text-gray-400 text-[16px] uppercase tracking-wider text-center'>
-          What's up with me so far
-        </p>
-        <h2 className='text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-center mt-2'>
+        <h2 className='text-3xl font-bold text-white text-center mb-4'>
           LIFE & WORK
         </h2>
+        <p className='text-gray-400 text-[16px]  tracking-wider text-center mb-12'>
+          What's up with me so far
+        </p>
       </motion.div>
 
       <div className='mt-20 flex flex-col'>
