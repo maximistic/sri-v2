@@ -323,13 +323,13 @@ const certifications = [
 ];
 
 const techStack = [
-  { name: 'React JS', logo: 'assets/tech/reactjs.png' },
-  { name: 'Node JS', logo: 'assets/tech/nodejs.png' },
+  { name: 'ReactJS', logo: 'assets/tech/reactjs.png' },
+  { name: 'NodeJS', logo: 'assets/tech/nodejs.png' },
   { name: 'Tailwind', logo: 'assets/tech/tailwind.png' },
   { name: 'TypeScript', logo: 'assets/tech/typescript.png' },
   { name: 'JavaScript', logo: 'assets/tech/javascript.png' },
   { name: 'HTML', logo: 'assets/tech/html.png' },
-  { name: 'Three JS', logo: 'assets/tech/threejs.svg' },
+  { name: 'ThreeJS', logo: 'assets/tech/threejs.svg' },
   { name: 'MongoDB', logo: 'assets/tech/mongodb.png' }
 ];
 

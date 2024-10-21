@@ -1,33 +1,55 @@
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { certifications } from "../constants/index";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Certifications = () => {
   const [selectedCert, setSelectedCert] = useState(null);
+  const [visibleCerts, setVisibleCerts] = useState(certifications);
   const containerRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const closeModal = () => setSelectedCert(null);
 
-  return (
-    <div className="bg-black text-white min-h-screen overflow-hidden select-none">
-      <h1 className="text-4xl font-bold text-center py-8">My Certifications</h1>
+  const handleNavigation = (direction) => {
+    if (direction === 'left' && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (direction === 'right' && currentIndex < certifications.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
 
-      <motion.div 
-        ref={containerRef} 
-        className="flex pb-10 space-x-8 px-8 cursor-grab active:cursor-grabbing" 
-        drag="x" 
-        dragConstraints={{ left: -1000, right: 0 }}
-      >
-        {certifications.map((cert, index) => (
-          <CertCard 
-            key={cert.id} 
-            cert={cert} 
-            index={index} 
-            onClick={() => setSelectedCert(cert)} 
-          />
-        ))}
-      </motion.div>
+  useEffect(() => {
+    const newVisibleCerts = certifications.slice(currentIndex, currentIndex + 3);
+    setVisibleCerts(newVisibleCerts);
+  }, [currentIndex]);
+
+  return (
+    <div className="bg-black text-white min-h-screen overflow-hidden select-none px-4 py-12">
+      <h1 className="text-3xl font-bold text-white mb-12 text-center">My Certifications</h1>
+
+      <div className="relative max-w-5xl mx-auto">
+        <motion.div 
+          ref={containerRef} 
+          className="flex justify-center space-x-8"
+        >
+          <AnimatePresence initial={false}>
+            {visibleCerts.map((cert, index) => (
+              <CertCard 
+                key={cert.id} 
+                cert={cert} 
+                index={index} 
+                onClick={() => setSelectedCert(cert)} 
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        <div className="flex justify-center mt-8 space-x-4">
+          <NavButton direction="left" onClick={() => handleNavigation('left')} disabled={currentIndex === 0} />
+          <NavButton direction="right" onClick={() => handleNavigation('right')} disabled={currentIndex >= certifications.length - 3} />
+        </div>
+      </div>
 
       {selectedCert && (
         <CertModal cert={selectedCert} onClose={closeModal} />
@@ -36,25 +58,33 @@ const Certifications = () => {
   );
 };
 
-const CertCard = ({ cert, onClick }) => {
+const CertCard = ({ cert, onClick, index }) => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start({ opacity: 1, x: 0, rotateY: 0, transition: { delay: index * 0.2 } });
+  }, [controls, index]);
+
   return (
     <motion.div 
-      className="flex-shrink-0 w-80 h-96 bg-black rounded-xl overflow-hidden shadow-lg cursor-pointer border border-white transition-all duration-200" 
-      whileHover={{ scale: 1.08, rotateY: 5 }} 
+      className="flex-shrink-0 w-64 sm:w-80 h-80 sm:h-96 bg-black rounded-xl overflow-hidden shadow-lg cursor-pointer border border-white transition-all duration-200" 
+      whileHover={{ scale: 1.05, rotateY: 5 }} 
       onClick={onClick}
       style={{ transformStyle: 'preserve-3d' }}
       whileTap={{ scale: 0.95 }}
+      initial={{ opacity: 0, x: 100, rotateY: 45 }}
+      animate={controls}
       exit={{
         opacity: 0,
-        rotateY: 90,
-        x: 300,
-        transition: { duration: 0.6 },
+        x: -100,
+        rotateY: -45,
+        transition: { duration: 0.5 },
       }}
     >
-      <img src={cert.image} alt={cert.title} className="w-full h-48 object-cover" />
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{cert.title}</h3>
-        <p className="text-sm text-gray-400">{cert.issuer} | {cert.date}</p>
+      <img src={cert.image} alt={cert.title} className="w-full h-40 sm:h-48 object-cover" />
+      <div className="p-4 sm:p-6">
+        <h3 className="text-lg sm:text-xl font-semibold mb-2">{cert.title}</h3>
+        <p className="text-xs sm:text-sm text-gray-400">{cert.issuer} | {cert.date}</p>
       </div>
       <motion.div
         className="absolute inset-0 ring-0 rounded-xl pointer-events-none"
@@ -67,6 +97,23 @@ const CertCard = ({ cert, onClick }) => {
   );
 };
 
+const NavButton = ({ direction, onClick, disabled }) => {
+  return (
+    <motion.button
+      className={`w-12 h-12 rounded-full bg-gradient-to-r from-gray-800 to-gray-900 flex items-center justify-center ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+      whileHover={disabled ? {} : { scale: 1.1 }}
+      whileTap={disabled ? {} : { scale: 0.95 }}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {direction === 'left' ? (
+        <ChevronLeft className="w-6 h-6 text-white" />
+      ) : (
+        <ChevronRight className="w-6 h-6 text-white" />
+      )}
+    </motion.button>
+  );
+};
 const CertModal = ({ cert, onClose }) => {
   return (
     <motion.div 
