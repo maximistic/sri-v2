@@ -29,4 +29,4 @@ export function Avatar(props) {
   )
 }
 
-useGLTF.preload('models/Sri.glb')
+useGLTF.preload('models/Sri.glb') 
