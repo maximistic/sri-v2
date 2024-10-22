@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { certifications } from "../constants/index";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -55,7 +55,7 @@ const Certifications = () => {
   );
 };
 
-const CertCard = ({ cert, onClick, index, direction }) => {
+const CertCard = forwardRef(({ cert, onClick, index, direction }, ref) => {
   const variants = {
     enter: (direction) => ({
       x: direction > 0 ? 800 : -800,
@@ -86,6 +86,7 @@ const CertCard = ({ cert, onClick, index, direction }) => {
 
   return (
     <motion.div 
+      ref={ref} // Attach the ref here
       className="flex-shrink-0 w-64 sm:w-80 h-80 sm:h-96 bg-black rounded-xl overflow-hidden shadow-lg cursor-pointer border border-white transition-all duration-300" 
       variants={variants}
       initial="enter"
@@ -102,7 +103,7 @@ const CertCard = ({ cert, onClick, index, direction }) => {
       </div>
     </motion.div>
   );
-};
+});
 
 
 const NavButton = ({ direction, onClick, disabled }) => {
