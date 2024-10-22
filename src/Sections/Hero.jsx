@@ -1,8 +1,6 @@
 
 import {Cover} from "../Components/ui/cover";
 const Hero = () => {
-  console.log("Rendering Hero component"); // Log to ensure the Hero is rendering
-
   return (
     <section className="min-h-screen w-full flex flex-col relative">
       <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 gap-3">
