@@ -8,13 +8,14 @@ import Projects from './Sections/Projects.jsx';
 import Certificates from './Sections/Certifications.jsx';
 import TechStacks from './Sections/TechStacks.jsx';
 import { Canvas } from '@react-three/fiber';
-import Exp from './Sections/Exp.jsx';
 
 const App = () => {
   return (
     <main className="max-w-7xl mx-auto">
       <Navbar />
-      <Hero />
+      <section id="home">
+        <Hero />
+      </section>
 
       {/* <Canvas
         shadows
@@ -24,15 +25,28 @@ const App = () => {
         <Exp />
       </Canvas> */}
 
-      <About />
-      <Experience />
-      <TechStacks />
-      <Projects />
-      <Certificates />
-      <Contact />
+      <section id="about">
+        <About />
+      </section>
+      <section id="experience">
+        <Experience />
+      </section>
+      <section id="tech-stacks">
+        <TechStacks />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="certificates">
+        <Certificates />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
       <Footer />
     </main>
   );
-}
+};
+
 
 export default App;

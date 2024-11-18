@@ -29,32 +29,32 @@ export const navLinks = [
   {
     id: 1,
     name: 'Home',
-    href: '#',
+    href: '#home', // Matches the Hero section
   },
   {
     id: 2,
     name: 'About',
-    href: '#',
+    href: '#about', // Matches the About section
   },
   {
     id: 3,
     name: 'Work',
-    href: '#',
+    href: '#experience', // Matches the Experience section
   },
   {
     id: 4,
     name: 'Projects',
-    href: '#',
+    href: '#projects', // Matches the Projects section
   },
   {
     id: 5,
     name: 'Certifications',
-    href: '#',
+    href: '#certificates', // Matches the Certificates section
   },
   {
     id: 6,
     name: 'Contact',
-    href: '#',
+    href: '#contact', // Matches the Contact section
   },
 ];
 
