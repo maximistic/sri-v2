@@ -16,13 +16,13 @@ const App = () => {
       <Navbar />
       <Hero />
 
-      <Canvas
+      {/* <Canvas
         shadows
         camera={{ position: [0, 0, 8], fov: 45 }}
         style={{ height: '100vh', background: 'black' }}
       >
         <Exp />
-      </Canvas>
+      </Canvas> */}
 
       <About />
       <Experience />
