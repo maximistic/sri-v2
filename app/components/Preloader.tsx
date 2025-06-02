@@ -31,7 +31,7 @@ export default function Intro() {
 
   useEffect(() => {
     if (index === words.length - 1) return;
-    const delay = index === 0 ? 1000 : 150;
+    const delay = index === 0 ? 1200 : 200;
     const timeout = setTimeout(() => {
       setIndex(prev => prev + 1);
     }, delay);
@@ -69,6 +69,10 @@ export default function Intro() {
           >
             <span className="block w-[10px] h-[10px] bg-white rounded-full mr-2"></span>
             {words[index]}
+            <span className="ml-2 animate-bounce delay-100">.</span>
+            <span className="ml-1 animate-bounce delay-100">.</span>
+            <span className="ml-1 animate-bounce delay-100">.</span>
+
           </motion.p>
           <svg className="absolute top-0 w-full h-[calc(100%+300px)] z-0">
             <motion.path
