@@ -12,7 +12,7 @@ export default function Home() {
       setTimeout(() => {
         setIsLoading(false);
         window.scrollTo(0, 0);
-      }, 2500);
+      }, 3000);
     })();
   }, []);
 
