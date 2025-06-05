@@ -74,25 +74,34 @@ export default function Preloader() {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="fixed top-0 left-0 w-screen h-screen flex flex-col items-center justify-center bg-[#141516] z-[99]"
+      className="fixed top-0 left-0 w-screen h-screen bg-[#141516] z-[99] flex flex-col items-center justify-center"
     >
       {dimension.width > 0 && (
         <>
-          <div className="flex flex-col items-center justify-center h-full w-full relative">
-            <motion.p
-              variants={opacity}
-              initial="initial"
-              animate="enter"
-              className="flex items-center text-white text-[30px] z-10 mb-12"
-            >
-              <span className="block w-[10px] h-[10px] bg-white rounded-full mr-2"></span>
-              {words[index]}
-              <span className="ml-2 animate-bounce delay-100">.</span>
-              <span className="ml-1 animate-bounce delay-100">.</span>
-              <span className="ml-1 animate-bounce delay-100">.</span>
-            </motion.p>
+          <motion.p
+            variants={opacity}
+            initial="initial"
+            animate="enter"
+            className="flex items-center text-white text-2xl sm:text-3xl mb-8 z-10"
+          >
+            <span className="block w-[10px] h-[10px] bg-white rounded-full mr-2"></span>
+            {words[index]}
+            <span className="ml-2 animate-bounce delay-100">.</span>
+            <span className="ml-1 animate-bounce delay-100">.</span>
+            <span className="ml-1 animate-bounce delay-100">.</span>
+          </motion.p>
 
-            <div className="w-64 h-3 bg-gray-700 rounded-full overflow-hidden mb-12 z-10">
+          <div className="absolute bottom-6 left-0 w-full flex flex-col items-center justify-center px-4 z-10">
+            <motion.div 
+              className="text-white text-4xl sm:text-5xl font-light mb-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.75 }}
+              transition={{ delay: 0.4 }}
+            >
+              {Math.round(progress)}%
+            </motion.div>
+
+            <div className="w-full max-w-xs h-1 sm:h-1 bg-gray-700 rounded-full overflow-hidden">
               <motion.div 
                 className="h-full bg-white rounded-full"
                 initial={{ width: 0 }}
@@ -101,16 +110,7 @@ export default function Preloader() {
               />
             </div>
           </div>
-
-          <motion.div 
-            className="absolute bottom-8 right-8 text-white text-6xl font-light z-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.75 }}
-            transition={{ delay: 0.4 }}
-          >
-            {Math.round(progress)}%
-          </motion.div>
-
+          
           <svg className="absolute top-0 w-full h-[calc(100%+300px)] z-0">
             <motion.path
               variants={curve}
