@@ -30,6 +30,8 @@ export default function Home() {
 
       <h1 className="text-4xl font-bold mb-6">Welcome to My Next.js App</h1>
       <p className={`text-lg ${syne.className}`}>Trial font usage with Syne</p>
+      <h1 className="text-4xl font-bold mb-6">Text for transition</h1>
+
       <div className="h-[100vh]"></div>
       <Fade value={para}/>
       <div className="h-[100vh]"></div>
