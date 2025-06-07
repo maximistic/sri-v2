@@ -74,7 +74,7 @@ export default function Preloader() {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="fixed top-0 left-0 w-screen h-screen bg-[#141516] z-[99] flex flex-col items-center justify-center"
+      className="fixed top-0 left-0 w-screen h-screen bg-[#873e23] z-[99] flex flex-col items-center justify-center"
     >
       {dimension.width > 0 && (
         <>
@@ -116,7 +116,7 @@ export default function Preloader() {
               variants={curve}
               initial="initial"
               exit="exit"
-              fill="#141516"
+              fill="#873e23"
             />
           </svg>
         </>

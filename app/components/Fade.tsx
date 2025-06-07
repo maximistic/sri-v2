@@ -23,12 +23,12 @@ export default function Fade({ value }: FadeProps) {
       scrollTrigger: {
         trigger: container.current,
         scrub: true,
-        start: `top`,
+        start: `top 50%`,
         end: `+=${window.innerHeight / 1.9}`,
       },
       opacity: 1,
       ease: "none",
-      stagger: 0.1,
+      stagger: 0.5,
     });
   };
 
