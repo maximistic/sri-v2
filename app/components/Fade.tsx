@@ -66,7 +66,7 @@ export default function Fade({ value }: FadeProps) {
   return (
     <div
       ref={container}
-      className="flex h-screen items-end justify-center mb-[100vh] text-orange-300"
+      className="flex h-screen items-end justify-center mb-[70vh] text-orange-300"
     >
       <div ref={body} className="w-[90%] flex flex-wrap">
         {splitWords(value)}
