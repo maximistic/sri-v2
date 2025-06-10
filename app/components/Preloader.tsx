@@ -53,15 +53,15 @@ export default function Preloader() {
           setIsComplete(true);
           return 100;
         }
-        return prev + 2;
+        return prev + 3;
       });
-    }, 50);
+    }, 40);
     return () => clearInterval(progressInterval);
   }, []);
 
   useEffect(() => {
     if (index === words.length - 1) return;
-    const delay = index === 0 ? 300 : 320;
+    const delay = index === 0 ? 250 : 280;
     const timeout = setTimeout(() => setIndex(prev => prev + 1), delay);
     return () => clearTimeout(timeout);
   }, [index]);
@@ -86,39 +86,69 @@ export default function Preloader() {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="fixed top-0 left-0 w-full h-full bg-[#873e23] z-[99] flex flex-col items-center justify-center"
+      className="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-[99] flex flex-col items-center justify-center"
     >
       {dimension.width > 0 && (
         <>
-          <motion.p
+          <motion.div
             variants={opacity}
             initial="initial"
             animate="enter"
-            className="flex items-center text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8 z-10"
+            className="flex flex-col items-center text-white mb-8 md:mb-12 z-10"
           >
-            <span className="block w-2 h-2 bg-white rounded-full mr-2" />
-            {words[index]}
-            <span className="ml-2 animate-bounce delay-100">.</span>
-            <span className="ml-1 animate-bounce delay-200">.</span>
-            <span className="ml-1 animate-bounce delay-300">.</span>
-          </motion.p>
-
-          <div className="absolute bottom-4 sm:bottom-6 w-full flex flex-col items-center px-4 z-10">
+            <div className="flex items-center text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4">
+              <motion.div
+                className="w-3 h-3 bg-blue-400 rounded-full mr-3"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <span className="font-light tracking-wide">{words[index]}</span>
+            </div>
+            
             <motion.div
-              className="text-white text-3xl sm:text-4xl lg:text-5xl font-light mb-2"
+              className="flex space-x-1"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.75 }}
-              transition={{ delay: 0.4 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
             >
-              {Math.round(progress)}%
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="w-2 h-2 bg-blue-400 rounded-full"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ 
+                    duration: 0.6, 
+                    repeat: Infinity, 
+                    delay: i * 0.1 
+                  }}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
+
+          <div className="absolute bottom-8 sm:bottom-12 w-full flex flex-col items-center px-6 z-10">
+            <motion.div
+              className="text-white text-5xl sm:text-6xl lg:text-7xl font-thin mb-6 tracking-wider"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              {Math.round(progress)}
+              <span className="text-2xl sm:text-3xl lg:text-4xl text-blue-400 ml-1">%</span>
             </motion.div>
 
-            <div className="w-full max-w-xs md:max-w-md lg:max-w-lg h-1.5 bg-gray-700 rounded-full overflow-hidden">
+            <div className="w-full max-w-sm md:max-w-md lg:max-w-xl h-0.5 bg-slate-700 rounded-full overflow-hidden relative">
               <motion.div
-                className="h-full bg-white rounded-full"
+                className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.1, ease: 'linear' }}
+              />
+              <motion.div
+                className="absolute top-0 right-0 w-8 h-full bg-gradient-to-r from-transparent to-white/20 rounded-full"
+                animate={{ x: ['-100%', '100%'] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                style={{ left: `${progress - 10}%` }}
               />
             </div>
           </div>
@@ -128,8 +158,15 @@ export default function Preloader() {
               variants={curve}
               initial="initial"
               exit="exit"
-              fill="#873e23"
+              fill="url(#gradient)"
             />
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#1e293b" />
+                <stop offset="50%" stopColor="#334155" />
+                <stop offset="100%" stopColor="#1e293b" />
+              </linearGradient>
+            </defs>
           </svg>
         </>
       )}
