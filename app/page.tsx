@@ -9,16 +9,16 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    (async () => {
-      setTimeout(() => {
-        setIsLoading(false);
-        window.scrollTo(0, 0);
-      }, 3000);
-    })();
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      window.scrollTo(0, 0);
+    }, 2500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="w-full min-h-screen">
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
