@@ -1,33 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
-import Lenis from 'lenis';
 import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import useLenis from '@/app/hooks/useLenis';
 
 const Hero: React.FC = () => {
-  const containerRef = useRef<HTMLElement | null>(null);
+  const containerRef = useRef<HTMLElement>(null!);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   });
 
-  useEffect(() => {
-    const lenis = new Lenis({ 
-      lerp: 0.1,
-      smooth: true,
-      direction: 'vertical'
-    });
-
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-
-    requestAnimationFrame(raf);
-
-    return () => lenis.destroy();
-  }, []);
+  useLenis();
 
   return (
     <main
@@ -36,8 +21,6 @@ const Hero: React.FC = () => {
     >
       <HeroSection scrollYProgress={scrollYProgress} />
       <AboutSection />
-      <TechStackSection />
-      <ContactSection />
     </main>
   );
 };
@@ -54,9 +37,8 @@ const HeroSection: React.FC<SectionProps> = ({ scrollYProgress }) => {
   return (
     <motion.section
       style={{ translateY, scale, opacity }}
-      className="sticky top-0 w-full h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden"
+      className="sticky top-0 w-full h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden"
     >
-      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 rounded-full blur-3xl"
@@ -96,7 +78,6 @@ const HeroSection: React.FC<SectionProps> = ({ scrollYProgress }) => {
         />
       </div>
 
-      {/* Grid pattern overlay */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -110,7 +91,6 @@ const HeroSection: React.FC<SectionProps> = ({ scrollYProgress }) => {
 
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center px-6 md:px-8">
         <div className="max-w-5xl mx-auto">
-          {/* Main heading with staggered animation */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,7 +120,6 @@ const HeroSection: React.FC<SectionProps> = ({ scrollYProgress }) => {
             </motion.h1>
           </motion.div>
 
-          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,7 +130,6 @@ const HeroSection: React.FC<SectionProps> = ({ scrollYProgress }) => {
             Transforming ideas into elegant solutions.
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -175,7 +153,6 @@ const HeroSection: React.FC<SectionProps> = ({ scrollYProgress }) => {
             </Button>
           </motion.div>
 
-          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -246,97 +223,6 @@ const AboutSection: React.FC = () => {
             Every project is an opportunity to push boundaries, solve complex problems, and create something meaningful 
             that makes a difference in people&#39;s lives.
           </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const TechStackSection: React.FC = () => {
-  const technologies = [
-    { name: "React", category: "Frontend" },
-    { name: "TypeScript", category: "Language" },
-    { name: "Next.js", category: "Framework" },
-    { name: "Tailwind CSS", category: "Styling" },
-    { name: "Node.js", category: "Backend" },
-    { name: "PostgreSQL", category: "Database" },
-    { name: "MongoDB", category: "Database" },
-    { name: "AWS", category: "Cloud" },
-    { name: "Docker", category: "DevOps" },
-    { name: "Git", category: "Version Control" },
-    { name: "Figma", category: "Design" },
-    { name: "Framer Motion", category: "Animation" }
-  ];
-
-  return (
-    <section className="relative w-full min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-900 mb-8">
-            Tech Stack
-          </h2>
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
-            Technologies and tools I use to bring ideas to life
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-        >
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white/80 backdrop-blur-sm border border-slate-200 rounded-xl p-6 text-center hover:shadow-lg hover:scale-105 transition-all duration-300 group"
-            >
-              <h3 className="font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                {tech.name}
-              </h3>
-              <p className="text-sm text-slate-500">{tech.category}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const ContactSection: React.FC = () => {
-  return (
-    <section className="relative w-full min-h-screen bg-slate-900 flex items-center justify-center py-20 px-6">
-      <div className="max-w-4xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-8">
-            Let&#39;s Work Together
-          </h2>
-          <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed">
-            Ready to bring your ideas to life? Let&#39;s create something amazing together.
-          </p>
-          <Button 
-            size="lg" 
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
-          >
-            Get In Touch
-            <Mail className="ml-2 w-5 h-5" />
-          </Button>
         </motion.div>
       </div>
     </section>

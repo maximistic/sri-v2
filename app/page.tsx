@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen">
       <AnimatePresence mode="wait">
-        {isLoading && <Preloader />}
+        {isLoading && <Preloader key="preloader"/>}
       </AnimatePresence>
       <Hero />
     </div>
