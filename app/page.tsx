@@ -5,7 +5,7 @@ import Preloader from "./components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import Hero from "./components/Hero"; 
 import useLenis from "./hooks/useLenis";
-import Footer from "./components/Footer";
+import ContactSection from "./components/Contact";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +28,7 @@ export default function Home() {
       </AnimatePresence>
       <Hero />
 
-      <Footer />
+      <ContactSection />
     </div>
   );
 }
