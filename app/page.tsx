@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import Hero from "./components/Hero"; 
+import useLenis from "./hooks/useLenis";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+
+  useLenis();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,6 +27,8 @@ export default function Home() {
         {isLoading && <Preloader key="preloader"/>}
       </AnimatePresence>
       <Hero />
+
+      <Footer />
     </div>
   );
 }
