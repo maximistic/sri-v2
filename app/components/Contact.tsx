@@ -192,7 +192,7 @@ const ContactCard: React.FC = () => {
   );
 };
 
-// ContactSection Component with gradient background
+// ContactSection Component with gradient background 
 const ContactSection: React.FC = () => {
   return (
     <div 
