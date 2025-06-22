@@ -6,18 +6,10 @@ import { AnimatePresence } from "framer-motion";
 import Hero from "./components/Hero"; 
 import useLenis from "./hooks/useLenis";
 import ContactSection from "./components/Contact";
-import MorphingMenu from "./components/SideMenu";
 import SideMenu from "./components/SideMenu2";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-const navItems = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#work', label: 'Work' },
-  { href: '#contact', label: 'Contact' },
-];
   useLenis();
 
   useEffect(() => {
@@ -35,10 +27,6 @@ const navItems = [
         {isLoading && <Preloader key="preloader"/>}
       </AnimatePresence>
       <header className="fixed top-6 right-6 z-50 ">
-        <MorphingMenu
-          links={navItems}
-          overlayBg="bg-neutral-900"
-        />
         <SideMenu />
       </header>
       <Hero />
