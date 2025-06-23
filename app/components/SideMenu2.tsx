@@ -16,7 +16,7 @@ const menuLinks: MenuLink[] = [
   { path: "/contact", label: "Contact" },
 ];
 
-function SideMenu2() {
+function SideMenu() {
   const container = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -166,4 +166,4 @@ function SideMenu2() {
   );
 }
 
-export default SideMenu2;
+export default SideMenu;
