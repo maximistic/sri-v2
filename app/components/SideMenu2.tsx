@@ -90,13 +90,13 @@ function SideMenu2() {
           </div>
         </div>
 
-        {/* Menu Links (Big & Spacious) */}
-        <div className="flex-1 flex flex-col justify-center pb-4 md:pb-8">
-          <div className="menu-links space-y-2 md:space-y-4 lg:space-y-6">
+        {/* Menu Links (Centered & Responsive) */}
+        <div className="flex-1 flex flex-col justify-center items-center pb-4 md:pb-8">
+          <div className="menu-links w-full max-w-6xl mx-auto space-y-4 md:space-y-6 lg:space-y-8 px-4 sm:px-6">
             {menuLinks.map((link, index) => (
               <div
                 key={index}
-                className="menu-link-item w-full"
+                className="menu-link-item w-auto"
                 style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
               >
                 <div
@@ -108,22 +108,29 @@ function SideMenu2() {
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + index * 0.05, duration: 0.4, ease: "easeOut" }}
-                    className="flex items-center w-full"
+                    transition={{
+                      delay: 0.1 + index * 0.05,
+                      duration: 0.4,
+                      ease: "easeOut",
+                    }}
+                    className="flex items-center w-auto"
                   >
-                    {/* Index (01, 02...) */}
-                    <div className="text-xs md:text-sm w-8 md:w-12 text-emerald-100 opacity-80">
-                      {String(index + 1).padStart(2, "0")}
+                    {/* Index and Divider Column */}
+                    <div className="flex flex-col items-start w-[60%] mr-6">
+                      <div className="text-xs md:text-sm text-emerald-100 opacity-80 mb-1">
+                        {String(index + 1).padStart(2, "0")}
+                      </div>
+
+                      <div
+                        className="h-px bg-emerald-300 opacity-30 transition-all duration-300"
+                        style={{
+                          opacity: hoveredIndex === index ? 0.7 : 0.3,
+                          width: "100%",
+                        }}
+                      />
                     </div>
 
-                    {/* Divider Line */}
-                    <div className="flex-1 h-px bg-emerald-300 opacity-30 mx-2 md:mx-4 transition-all duration-300"
-                      style={{
-                        opacity: hoveredIndex === index ? 0.7 : 0.3,
-                      }}
-                    />
-
-                    {/* Menu Link (Responsive Scaling) */}
+                    {/* Menu Link */}
                     <Link
                       href={link.path}
                       className={`text-right text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif transition-all duration-300 ${
@@ -133,6 +140,9 @@ function SideMenu2() {
                           ? "text-white opacity-100"
                           : "text-emerald-100 opacity-30"
                       }`}
+                      style={{
+                        marginLeft: "12px",
+                      }}
                     >
                       {link.label}
                     </Link>
@@ -143,23 +153,12 @@ function SideMenu2() {
           </div>
         </div>
 
-        {/* Footer (Social Links & Contact - Now More Compact) */}
-        <div className="w-full mt-auto pt-4 md:pt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm md:text-base">
-          <div className="flex flex-col space-y-1 md:space-y-2">
-            <a href="#" className="text-emerald-100 hover:text-white transition-colors">
-              X ↗
-            </a>
-            <a href="#" className="text-emerald-100 hover:text-white transition-colors">
-              LinkedIn ↗
-            </a>
-            <a href="#" className="text-emerald-100 hover:text-white transition-colors">
-              Behance ↗
-            </a>
-          </div>
-          <div className="flex flex-col space-y-1 md:space-y-2">
-            <p className="text-emerald-100">srikailaash.pr@gmail.com</p>
-            <p className="text-emerald-100">+91 numberpa</p>
-            <p className="text-emerald-100">Hyderabad, India</p>
+
+        <div className="w-full max-w-4xl mx-auto mb-8 pt-8 md:pt-16 pb-8 md:pb-12 px-4 flex justify-center">
+          <div className="flex flex-wrap justify-center space-x-6 sm:space-x-8 text-sm md:text-base text-emerald-100">
+            <a href="#" className="hover:text-white transition-colors">X ↗</a>
+            <a href="#" className="hover:text-white transition-colors">LinkedIn ↗</a>
+            <a href="#" className="hover:text-white transition-colors">Behance ↗</a>
           </div>
         </div>
       </div>
