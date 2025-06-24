@@ -16,6 +16,46 @@ const menuLinks: MenuLink[] = [
   { path: "/contact", label: "Contact" },
 ];
 
+const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
+  <div className="flex flex-col justify-center items-center w-6 h-6 cursor-pointer">
+    <motion.div
+      className="w-6 h-0.5 bg-black mb-2"
+      initial={false}
+      animate={{
+        rotate: isOpen ? 45 : 0,
+        y: isOpen ? 4 : 0,
+      }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    />
+    <motion.div
+      className="w-6 h-0.5 bg-black"
+      initial={false}
+      animate={{
+        rotate: isOpen ? -45 : 0,
+        y: isOpen ? -4 : 0,
+      }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    />
+  </div>
+);
+
+const CloseIcon = () => (
+  <div className="relative w-6 h-6 cursor-pointer">
+    <motion.div
+      className="absolute top-1/2 left-1/2 w-6 h-0.5 bg-emerald-100"
+      style={{ transformOrigin: "center" }}
+      animate={{ rotate: 45, x: "-50%", y: "-50%" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    />
+    <motion.div
+      className="absolute top-1/2 left-1/2 w-6 h-0.5 bg-emerald-100"
+      style={{ transformOrigin: "center" }}
+      animate={{ rotate: -45, x: "-50%", y: "-50%" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    />
+  </div>
+);
+
 function SideMenu() {
   const container = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -69,7 +109,7 @@ function SideMenu() {
           </Link>
         </div>
         <div className="menu-open cursor-pointer" onClick={toggleMenu}>
-          <p className="text-black text-lg md:text-xl">menu</p>
+          <HamburgerIcon isOpen={isMenuOpen} />
         </div>
       </div>
 
@@ -86,7 +126,7 @@ function SideMenu() {
             </Link>
           </div>
           <div className="menu-close cursor-pointer text-emerald-100 text-lg md:text-xl" onClick={toggleMenu}>
-            <p>close</p>
+            <CloseIcon />
           </div>
         </div>
 
@@ -131,21 +171,20 @@ function SideMenu() {
                     </div>
 
                     {/* Menu Link */}
-                    <Link
-                      href={link.path}
-                      className={`text-right text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif transition-all duration-300 ${
-                        hoveredIndex === null
-                          ? "text-emerald-100 opacity-100"
-                          : hoveredIndex === index
-                          ? "text-white opacity-100"
-                          : "text-emerald-100 opacity-30"
-                      }`}
-                      style={{
-                        marginLeft: "12px",
-                      }}
-                    >
-                      {link.label}
-                    </Link>
+                    <div className="flex-1 text-right">
+                      <Link
+                        href={link.path}
+                        className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif transition-all duration-300 ${
+                          hoveredIndex === null
+                            ? "text-emerald-100 opacity-100"
+                            : hoveredIndex === index
+                            ? "text-white opacity-100"
+                            : "text-emerald-100 opacity-30"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    </div>
                   </motion.div>
                 </div>
               </div>
