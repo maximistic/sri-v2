@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
 import { AnimatePresence } from "framer-motion";
-import Hero from "./components/Hero"; 
 import useLenis from "./hooks/useLenis";
 import ContactSection from "./components/Contact";
 import SideMenu from "./components/SideMenu2";
+import  ExperienceSection  from "./components/About";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function Home() {
       <header className="fixed top-6 right-6 z-50 ">
         <SideMenu />
       </header>
-      <Hero />
+      <ExperienceSection />
 
       <ContactSection />
     </div>
