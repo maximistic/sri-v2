@@ -4,7 +4,6 @@ import { motion, useMotionValue, useSpring, MotionValue } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import React, { useState, useRef } from 'react';
 
-// FlipText Component (only used for specific elements now)
 interface FlipTextProps {
   text: string;
   className?: string;
@@ -63,14 +62,14 @@ const ContactItem: React.FC<ContactItemProps> = ({ icon, label, value, delay }) 
     transition={{ delay, duration: 0.5 }}
     className="flex items-center gap-4 group"
   >
-    <div className="w-10 h-10 border border-zinc-200 rounded-full flex items-center justify-center text-zinc-600 group-hover:bg-zinc-100 transition-colors">
+    <div className="w-10 h-10 border border-zinc-700 rounded-full flex items-center justify-center text-zinc-400 group-hover:bg-zinc-800 transition-colors">
       {icon}
     </div>
     <div>
       <div className="text-xs text-zinc-500 mb-1">
         {label}
       </div>
-      <div className="text-zinc-900 font-medium">
+      <div className="text-zinc-100 font-medium">
         {value}
       </div>
     </div>
@@ -86,7 +85,7 @@ interface CustomCursorProps {
 
 const CustomCursor: React.FC<CustomCursorProps> = ({ x, y, isVisible }) => (
   <motion.div
-    className="absolute w-6 h-6 bg-zinc-900 rounded-full pointer-events-none z-50 mix-blend-difference"
+    className="absolute w-6 h-6 bg-zinc-100 rounded-full pointer-events-none z-50 mix-blend-difference"
     style={{ x, y, left: -12, top: -12 }}
     animate={{ scale: isVisible ? 1 : 0, opacity: isVisible ? 1 : 0 }}
     transition={{ type: 'spring', stiffness: 500, damping: 28 }}
@@ -114,7 +113,7 @@ const ContactCard: React.FC = () => {
   return (
     <motion.div
       ref={containerRef}
-      className="relative bg-white border border-zinc-200 rounded-3xl p-8 sm:p-12 shadow-sm cursor-none"
+      className="relative bg-zinc-900 border border-zinc-800 rounded-3xl p-8 sm:p-12 shadow-sm cursor-none"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -129,10 +128,10 @@ const ContactCard: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl sm:text-5xl font-light text-zinc-900 mb-4 tracking-tight">
-              Let &#39;s Connect
+            <h1 className="text-4xl sm:text-5xl font-light text-zinc-100 mb-4 tracking-tight">
+              Let&apos;s Connect
             </h1>
-            <div className="w-16 h-px bg-zinc-900" />
+            <div className="w-16 h-px bg-zinc-700" />
           </motion.div>
 
           <div className="space-y-6">
@@ -150,12 +149,12 @@ const ContactCard: React.FC = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="space-y-8"
           >
-            <div className="text-zinc-600 text-lg leading-relaxed">
-              Ready to bring your ideas to life? Let &#39;s create something extraordinary together.
+            <div className="text-zinc-400 text-lg leading-relaxed">
+              Ready to bring your ideas to life? Let&apos;s create something extraordinary together.
             </div>
 
             <motion.button
-              className="group inline-flex items-center gap-3 bg-zinc-900 text-white px-8 py-4 rounded-full font-medium hover:bg-zinc-800 transition-colors cursor-none"
+              className="group inline-flex items-center gap-3 bg-zinc-100 text-zinc-900 px-8 py-4 rounded-full font-medium hover:bg-zinc-200 transition-colors cursor-none"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onMouseEnter={() => setIsButtonHovered(true)}
@@ -180,7 +179,7 @@ const ContactCard: React.FC = () => {
                 >
                   <FlipText 
                     text={platform} 
-                    className="text-zinc-500 hover:text-zinc-900 transition-colors text-sm sm:text-base" 
+                    className="text-zinc-500 hover:text-zinc-100 transition-colors text-sm sm:text-base" 
                   />
                 </motion.div>
               ))}
@@ -196,7 +195,7 @@ const ContactCard: React.FC = () => {
 const ContactSection: React.FC = () => {
   return (
     <div 
-      className="relative h-[100vh] w-full bg-gradient-to-br from-teal-100 via-white to-blue-50"
+      className="relative h-[100vh] w-full bg-gradient-to-br bg-zinc-950"
       style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
     >
       <div className="fixed bottom-0 h-[100vh] w-full flex items-center justify-center px-4 sm:px-8">
