@@ -2,6 +2,7 @@
 
 import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 interface ExperienceItem {
   id: string;
@@ -102,12 +103,12 @@ function ExperienceSection() {
       className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" 
       aria-label="Work experience"
     >
-      {/* Sticky header for mobile */}
+      {/* Sticky header for mobile
       <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
         <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">
           Experience
         </h2>
-      </div>
+      </div> */}
 
       <div>
         <ol className="group/list">
@@ -203,20 +204,18 @@ function ExperienceSection() {
 
         {/* View Full Resume link */}
         <div className="mt-12">
-          <a 
-            className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 font-semibold text-slate-200 group/link text-base" 
-            href="/resume.pdf" 
-            target="_blank" 
-            rel="noreferrer noopener" 
-            aria-label="View Full Résumé (opens in a new tab)"
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View full résumé (opens in a new tab)"
+            className="group inline-flex items-center gap-1 text-base font-semibold text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 transition-colors"
           >
-            <span>
-              View Full{' '}
-              <span className="inline-block">
-                Résumé
-                <ExternalLink className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true" />
-              </span>
-            </span>
+            View Full <span>Résumé</span>
+            <ExternalLink
+              className="h-4 w-4 transform transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-focus-visible:-translate-y-0.5 group-focus-visible:translate-x-0.5 motion-reduce:transform-none"
+              aria-hidden="true"
+            />
           </a>
         </div>
       </div>
@@ -230,14 +229,14 @@ export default function PortfolioLayout() {
       <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
           
-          {/* Fixed Left Sidebar */}
+          {/* Sidebar */}
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
             <div>
               <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
-                <a href="/">John Developer</a>
+                <Link href="/" className="hover:text-teal-300">Developer</Link>
               </h1>
               <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
-                Senior Frontend Engineer
+                Frontend Engineer
               </h2>
               <p className="mt-4 max-w-xs leading-normal">
                 I build accessible, pixel-perfect digital experiences for the web.
@@ -246,35 +245,21 @@ export default function PortfolioLayout() {
               {/* Navigation */}
               <nav className="nav hidden lg:block" aria-label="In-page jump links">
                 <ul className="mt-16 w-max">
-                  <li>
-                    <a className="group flex items-center py-3 active" href="#about">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span>
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
-                        About
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="group flex items-center py-3" href="#experience">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span>
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
-                        Experience
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="group flex items-center py-3" href="#projects">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span>
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
-                        Projects
-                      </span>
-                    </a>
-                  </li>
+                  {['about', 'experience', 'projects'].map((section) => (
+                    <li key={section}>
+                      <a className="group flex items-center py-3" href={`#${section}`}>
+                        <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200" />
+                        <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">
+                          {section.charAt(0).toUpperCase() + section.slice(1)}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </nav>
             </div>
             
-            {/* Social Links */}
+            {/* Social Links
             <ul className="ml-1 mt-8 flex items-center" aria-label="Social media">
               <li className="mr-5 text-xs shrink-0">
                 <a className="block hover:text-slate-200" href="https://github.com/johndeveloper" target="_blank" rel="noreferrer noopener" aria-label="GitHub (opens in a new tab)" title="GitHub">
@@ -301,13 +286,11 @@ export default function PortfolioLayout() {
                   </svg>
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </header>
 
           <main id="content" className="pt-24 lg:w-1/2 lg:py-24">
             <ExperienceSection />
-
-
           </main>
         </div>
       </div>
