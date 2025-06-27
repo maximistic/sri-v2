@@ -19,7 +19,7 @@ const menuLinks: MenuLink[] = [
 const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
   <div className="flex flex-col justify-center items-center w-6 h-6 cursor-pointer">
     <motion.div
-      className="w-6 h-0.5 bg-black mb-2"
+      className="w-6 h-0.5 bg-emerald-100 mb-2"
       initial={false}
       animate={{
         rotate: isOpen ? 45 : 0,
@@ -28,7 +28,7 @@ const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
       transition={{ duration: 0.3, ease: "easeInOut" }}
     />
     <motion.div
-      className="w-6 h-0.5 bg-black"
+      className="w-6 h-0.5 bg-emerald-100"
       initial={false}
       animate={{
         rotate: isOpen ? -45 : 0,
