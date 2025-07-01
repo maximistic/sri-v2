@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { unbounded } from "./fonts";
 import "./globals.css";
 import { ThemeProvider } from "@/components/context/theme-provider";
-import { useCursorGlow } from "@/components/context/CursorGlow";
 
 export const metadata: Metadata = {
   title: "Sri",
@@ -23,9 +22,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <useCursorGlow className="min-h-screen">
         {children}
-        </useCursorGlow>
         </ThemeProvider>
       </body>
     </html>
