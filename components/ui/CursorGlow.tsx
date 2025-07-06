@@ -15,7 +15,7 @@ export default function CursorGlow({ mousePosition, isHovered }: CursorGlowProps
       <motion.div
         className="absolute inset-0 pointer-events-none z-0"
         style={{
-          background: `radial-gradient(420px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.11), transparent 100%)`,
+          background: `radial-gradient(420px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(18, 160, 75, 0.5), transparent 100%)`,
         }}
         animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.4 }}
