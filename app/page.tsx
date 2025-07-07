@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import Preloader from "./components/Preloader";
+import Preloader from "../components/Preloader";
 import { AnimatePresence } from "framer-motion";
-import useLenis from "./hooks/useLenis";
-import ContactSection from "./components/Contact";
-import SideMenu from "./components/SideMenu2";
-import  ExperienceSection  from "./components/About";
-import HeroSection from "./components/Hero";
+import useLenis from "../hooks/useLenis";
+import ContactSection from "../components/Contact";
+import SideMenu from "../components/SideMenu2";
+import  ExperienceSection  from "../components/About";
+import HeroSection from "../components/Hero";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

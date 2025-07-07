@@ -18,11 +18,11 @@ export default function RootLayout({
       <body className={unbounded.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
-          disableTransitionOnChange
+          disableTransitionOnChange={false}
         >
-        {children}
+          {children}
         </ThemeProvider>
       </body>
     </html>
