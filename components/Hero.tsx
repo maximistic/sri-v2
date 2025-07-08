@@ -10,8 +10,9 @@ export default function HeroSection() {
 
   return (
     <section
+      id="home"
       ref={ref}
-      className="relative w-full min-h-screen flex items-center justify-center bg-zinc-950 text-zinc-50 px-6 sm:px-8 overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center bg-background text-foreground px-6 sm:px-8 overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -31,11 +32,11 @@ export default function HeroSection() {
         >
           Crafting Digital
           <br />
-          <span className="text-zinc-400">Experiences</span>
+          <span className="text-muted-foreground">Experiences</span>
         </motion.h1>
 
         <motion.p
-          className="text-zinc-400 text-base sm:text-lg md:text-xl leading-relaxed mb-12 sm:mb-16 max-w-2xl mx-auto"
+          className="text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed mb-12 sm:mb-16 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -51,7 +52,7 @@ export default function HeroSection() {
         >
           <motion.a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3 bg-zinc-50 text-zinc-950 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-zinc-100 w-full sm:w-auto"
+            className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-lg transition-all duration-200 hover:bg-primary/90 w-full sm:w-auto"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -59,12 +60,12 @@ export default function HeroSection() {
           </motion.a>
 
           <motion.a
-            href="#work"
-            className="inline-flex items-center justify-center px-8 py-3 text-zinc-300 text-sm font-medium rounded-lg border border-zinc-800 transition-all duration-200 hover:border-zinc-600 hover:text-zinc-100 w-full sm:w-auto"
+            href="#experience"
+            className="inline-flex items-center justify-center px-8 py-3 text-muted-foreground text-sm font-medium rounded-lg border border-border transition-all duration-200 hover:border-border/60 hover:text-foreground w-full sm:w-auto"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            View Work
+            View Experience
           </motion.a>
         </motion.div>
       </motion.div>
