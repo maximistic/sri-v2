@@ -2,22 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import CursorGlow from "@/components/ui/CursorGlow";
-import { useCursorGlow } from "../hooks/useCursorGlow";
+import ShimmerButton from "./ui/ShimmerButton";
 
 export default function HeroSection() {
-  const { ref, mousePosition, isHovered, setIsHovered } = useCursorGlow();
-
   return (
     <section
       id="home"
-      ref={ref}
       className="relative w-full min-h-screen flex items-center justify-center bg-background text-foreground px-6 sm:px-8 overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      <CursorGlow mousePosition={mousePosition} isHovered={isHovered} />
-
       <motion.div
         className="max-w-4xl text-center relative z-20"
         initial={{ opacity: 0, y: 20 }}
@@ -50,23 +42,16 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
         >
-          <motion.a
-            href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-lg transition-all duration-200 hover:bg-primary/90 w-full sm:w-auto"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Get in Touch
-          </motion.a>
-
-          <motion.a
-            href="#experience"
-            className="inline-flex items-center justify-center px-8 py-3 text-muted-foreground text-sm font-medium rounded-lg border border-border transition-all duration-200 hover:border-border/60 hover:text-foreground w-full sm:w-auto"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            View Experience
-          </motion.a>
+        <ShimmerButton
+          href="#projects"
+        >
+          View Projects
+        </ShimmerButton>
+        <ShimmerButton
+          href="#contact"
+        >
+          Contact Me
+        </ShimmerButton>
         </motion.div>
       </motion.div>
     </section>
