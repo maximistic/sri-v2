@@ -135,7 +135,7 @@ export default function PortfolioLayout() {
               <div className="mt-6 lg:mt-8">
                 <div className="relative w-32 h-32 lg:w-100 lg:h-100">
                   <Image
-                    src="/images/man1.jpg"
+                    src="/images/man1.webp"
                     alt="Profile"
                     width={400}
                     height={400}
