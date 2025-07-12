@@ -8,6 +8,7 @@ import ContactSection from "../components/Contact";
 import SideMenu from "../components/SideMenu2";
 import  ExperienceSection  from "../components/About";
 import HeroSection from "../components/Hero";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +33,7 @@ export default function Home() {
       </header>
       <HeroSection />
       <ExperienceSection />
-
+      <Testimonials />
       <ContactSection />
     </div>
   );
