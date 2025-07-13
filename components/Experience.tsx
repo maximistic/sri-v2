@@ -85,7 +85,7 @@ const ExperienceTimeline = () => {
                     <div className="timeline-card bg-white p-8 rounded-2xl border border-neutral-200">
                       <Quote className="w-8 h-8 text-neutral-400 mb-4" />
                       <blockquote className="text-neutral-700 text-lg leading-relaxed mb-6">
-                        "{card.review}"
+                        &ldquo;{card.review}&rdquo;
                       </blockquote>
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 bg-neutral-900 rounded-full flex items-center justify-center">
@@ -213,7 +213,7 @@ const ExperienceTimeline = () => {
                     <div className="timeline-card bg-neutral-900 p-6 rounded-2xl text-white">
                       <Quote className="w-6 h-6 text-neutral-400 mb-3" />
                       <blockquote className="text-sm leading-relaxed mb-4">
-                        "{card.review}"
+                        &ldquo;{card.review}&rdquo;
                       </blockquote>
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
