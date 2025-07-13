@@ -1,129 +1,228 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { expCards } from "@/lib";
-import GlowCard from "@/app/components/GlowCard";
-import Image from "next/image";
-import ShimmerButton from "./ui/ShimmerButton";
+import { useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+import { expCards } from '@/lib';
+import { MapPin, Calendar, Building2, Quote } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Experience = () => {
+const ExperienceTimeline = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const timelineProgress = useTransform(scrollYProgress, [0.1, 0.9], ['0%', '100%']);
+
   useEffect(() => {
-    gsap.utils.toArray<HTMLElement>(".timeline-card").forEach((card) => {
-      gsap.from(card, {
-        xPercent: -100,
-        opacity: 0,
-        transformOrigin: "left left",
-        duration: 1,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-        },
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>('.timeline-card').forEach((card) => {
+        gsap.fromTo(
+          card,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
       });
-    });
+    }, containerRef);
 
-    const timeline = gsap.to(".timeline", {
-      transformOrigin: "bottom bottom",
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".timeline",
-        start: "top center",
-        end: "70% center",
-        onUpdate: (self) => {
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-            overwrite: true,
-          });
-        },
-      },
-    });
-
-    gsap.utils.toArray<HTMLElement>(".expText").forEach((text) => {
-      gsap.from(text, {
-        opacity: 0,
-        xPercent: 0,
-        duration: 1,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: text,
-          start: "top 60%",
-        },
-      });
-    });
-
-    return () => {
-      timeline.scrollTrigger?.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      id="experience"
-      className="flex justify-center md:mt-40 mt-20 px-5 xl:px-0 py-16"
-    >
-      <div className="w-full max-w-screen-xl">
-        <div className="flex flex-col items-center gap-5">
-            <ShimmerButton>My Career Overview</ShimmerButton>
-          <h1 className="font-semibold md:text-5xl text-3xl text-center">
-            Professional Work Experience
-          </h1>
-        </div>
+    <section id="experience" className="py-20 md:py-32 bg-neutral-50" ref={containerRef}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <div className="inline-block px-4 py-2 bg-neutral-900 text-white rounded-full text-sm mb-4">
+            Professional Journey
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
+            Experience & Testimonials
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+            A timeline of my career growth with feedback from colleagues and managers
+          </p>
+        </motion.div>
 
-        <div className="mt-32 relative">
-          <div className="relative z-50 xl:space-y-32 space-y-10">
+        <div className="relative">
+          {/* Timeline Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-neutral-300 hidden lg:block">
+            <motion.div className="w-full bg-neutral-900 origin-top" style={{ height: timelineProgress }} />
+          </div>
+
+          <div className="absolute left-8 w-px h-full bg-neutral-300 lg:hidden">
+            <motion.div className="w-full bg-neutral-900 origin-top" style={{ height: timelineProgress }} />
+          </div>
+
+          <div className="space-y-16 md:space-y-24">
             {expCards.map((card, index) => (
-              <div
-                key={card.title}
-                className="exp-card-wrapper flex flex-col xl:flex-row gap-10 timeline-card"
-              >
-                <div className="xl:w-2/6 w-full">
-                  <GlowCard card={card} index={index}>
-                    <div>
-                      <Image
-                        src={card.imgPath}
-                        alt="exp-img"
-                        width={500}
-                        height={300}
-                        className="w-full h-auto rounded-lg object-cover"
-                      />
-                    </div>
-                  </GlowCard>
-                </div>
+              <div key={card.title + index} className="relative">
+                {/* Desktop Layout */}
+                <div className="hidden lg:block">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-neutral-900 rounded-full border-4 border-neutral-50 z-10"></div>
 
-                <div className="xl:w-4/6 w-full">
-                  <div className="flex items-start relative z-20">
-                    <div className="timeline-wrapper relative me-6">
-                      <div className="timeline w-1 bg-white h-full origin-bottom" />
-                      <div className="gradient-line absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-500 to-blue-500" />
+                  <div className="grid grid-cols-2 gap-16 items-center">
+                    {/* Review / Testimonial */}
+                    <div className="timeline-card bg-white p-8 rounded-2xl border border-neutral-200">
+                      <Quote className="w-8 h-8 text-neutral-400 mb-4" />
+                      <blockquote className="text-neutral-700 text-lg leading-relaxed mb-6">
+                        "{card.review}"
+                      </blockquote>
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-neutral-900 rounded-full flex items-center justify-center">
+                          <span className="text-white font-semibold text-sm">C</span>
+                        </div>
+                        <div>
+                          <div className="font-semibold text-neutral-900">Colleague</div>
+                          <div className="text-sm text-neutral-500">Team Member</div>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="expText flex flex-col gap-5">
-                      <div className="timeline-logo mb-4">
+                    {/* Experience Card */}
+                    <div className="timeline-card bg-white p-8 rounded-2xl border border-neutral-200">
+                      <div className="flex items-start gap-4 mb-6">
                         <Image
                           src={card.logoPath}
-                          alt="logo"
-                          width={56}
-                          height={56}
-                          className="w-14 h-14 object-contain"
+                          alt={`${card.title} logo`}
+                          width={50}
+                          height={50}
+                          className="rounded-lg object-cover"
                         />
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-neutral-900 mb-1">{card.title}</h3>
+                          <div className="flex items-center gap-2 text-neutral-600 mb-2">
+                            <Building2 size={16} />
+                            <span className="font-medium">Company</span>
+                          </div>
+                          <div className="flex flex-col gap-1 text-sm text-neutral-500">
+                            <div className="flex items-center gap-1">
+                              <Calendar size={14} />
+                              <span>{card.date}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <MapPin size={14} />
+                              <span>Remote</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <h1 className="font-semibold text-2xl md:text-3xl">
-                          {card.title}
-                        </h1>
-                        <p className="my-3 text-sm text-white/60">
-                          🗓️ {card.date}
-                        </p>
-                        <p className="text-[#839CB5] italic">Responsibilities</p>
-                        <ul className="list-disc ms-5 mt-4 flex flex-col gap-3 text-white/80 text-base">
-                          {card.responsibilities.map((responsibility, i) => (
-                            <li key={i}>{responsibility}</li>
-                          ))}
-                        </ul>
+
+                      <Image
+                        src={card.imgPath}
+                        alt={`${card.title} experience`}
+                        width={400}
+                        height={200}
+                        className="rounded-xl object-cover w-full h-32 mb-6"
+                      />
+
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="font-semibold text-neutral-900 mb-3">Key Responsibilities</h4>
+                          <ul className="space-y-2">
+                            {card.responsibilities.slice(0, 3).map((responsibility, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-sm text-neutral-600">
+                                <span className="text-neutral-900 mt-1">•</span>
+                                <span>{responsibility}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Layout */}
+                <div className="lg:hidden flex gap-6">
+                  <div className="w-4 h-4 bg-neutral-900 rounded-full border-4 border-neutral-50 flex-shrink-0"></div>
+
+                  <div className="flex-1 space-y-6">
+                    {/* Experience Card */}
+                    <div className="timeline-card bg-white p-6 rounded-2xl border border-neutral-200">
+                      <div className="flex items-start gap-3 mb-4">
+                        <Image
+                          src={card.logoPath}
+                          alt={`${card.title} logo`}
+                          width={40}
+                          height={40}
+                          className="rounded-lg object-cover"
+                        />
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-neutral-900 mb-1">{card.title}</h3>
+                          <div className="flex items-center gap-2 text-neutral-600 mb-2">
+                            <Building2 size={14} />
+                            <span className="text-sm font-medium">Company</span>
+                          </div>
+                          <div className="flex flex-col gap-1 text-xs text-neutral-500">
+                            <div className="flex items-center gap-1">
+                              <Calendar size={12} />
+                              <span>{card.date}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <MapPin size={12} />
+                              <span>Remote</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <Image
+                        src={card.imgPath}
+                        alt={`${card.title} experience`}
+                        width={400}
+                        height={150}
+                        className="rounded-xl object-cover w-full h-24 mb-4"
+                      />
+
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="font-semibold text-neutral-900 mb-2 text-sm">Key Responsibilities</h4>
+                          <ul className="space-y-1">
+                            {card.responsibilities.slice(0, 2).map((responsibility, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-xs text-neutral-600">
+                                <span className="text-neutral-900 mt-1">•</span>
+                                <span>{responsibility}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Review / Testimonial */}
+                    <div className="timeline-card bg-neutral-900 p-6 rounded-2xl text-white">
+                      <Quote className="w-6 h-6 text-neutral-400 mb-3" />
+                      <blockquote className="text-sm leading-relaxed mb-4">
+                        "{card.review}"
+                      </blockquote>
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                          <span className="text-neutral-900 font-semibold text-xs">C</span>
+                        </div>
+                        <div>
+                          <div className="font-semibold text-sm">Colleague</div>
+                          <div className="text-xs text-neutral-400">Team Member</div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -137,4 +236,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default ExperienceTimeline;
