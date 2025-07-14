@@ -127,14 +127,6 @@ const ExperienceTimeline = () => {
                         </div>
                       </div>
 
-                      <Image
-                        src={card.imgPath}
-                        alt={`${card.title} experience`}
-                        width={400}
-                        height={200}
-                        className="rounded-xl object-cover w-full h-32 mb-6"
-                      />
-
                       <div className="space-y-4">
                         <div>
                           <h4 className="font-semibold mb-3">Key Responsibilities</h4>
@@ -186,13 +178,7 @@ const ExperienceTimeline = () => {
                         </div>
                       </div>
 
-                      <Image
-                        src={card.imgPath}
-                        alt={`${card.title} experience`}
-                        width={400}
-                        height={150}
-                        className="rounded-xl object-cover w-full h-24 mb-4"
-                      />
+
 
                       <div className="space-y-3">
                         <div>
