@@ -56,10 +56,10 @@ const ExperienceTimeline = () => {
             Professional Journey
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Experience & Testimonials
+            Experience
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A timeline of my career growth with feedback from colleagues and managers
+            A timeline of my career growth
           </p>
         </motion.div>
 

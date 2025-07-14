@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
@@ -14,6 +14,8 @@ interface MenuLink {
 const menuLinks: MenuLink[] = [
   { path: "#", label: "Home" },
   { path: "#experience", label: "Experience" },
+  { path: "#projects", label: "Projects" },
+  { path: "#testimonials", label: "Testimonials" },
   { path: "#contact", label: "Contact" },
 ];
 
@@ -68,26 +70,29 @@ function SideMenu() {
   };
 
   // GSAP Animation Setup
-  useEffect(() => {
-    if (container.current) {
-      gsap.set(container.current.querySelectorAll(".menu-link-item-holder"), { y: 75 });
+useLayoutEffect(() => {
+  if (container.current) {
+    const items = container.current.querySelectorAll(".menu-link-item-holder");
 
-      tl.current = gsap
-        .timeline({ paused: true })
-        .to(container.current.querySelector(".menu-overlay"), {
-          duration: 1.25,
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          ease: "power4.inOut",
-        })
-        .to(container.current.querySelectorAll(".menu-link-item-holder"), {
-          y: 0,
-          duration: 1,
-          stagger: 0.1,
-          ease: "power4.inOut",
-          delay: -0.75,
-        });
-    }
-  }, []);
+    gsap.set(items, { y: 75 });
+
+    tl.current = gsap
+      .timeline({ paused: true })
+      .to(container.current.querySelector(".menu-overlay"), {
+        duration: 1.25,
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        ease: "power4.inOut",
+      })
+      .to(items, {
+        y: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power4.inOut",
+        delay: -0.75,
+      });
+  }
+}, []);
+
 
   // Handle Menu Open/Close
   useEffect(() => {

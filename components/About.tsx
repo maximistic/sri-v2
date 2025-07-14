@@ -7,12 +7,12 @@ import { experiences } from '@/lib';
 import Image from 'next/image';
 
 
-function ExperienceSection() {
+function ProjectsSection() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
     <section 
-      id="experience" 
+      id="projects" 
       className="mb-12 scroll-mt-16 md:mb-16 lg:mb-24 lg:scroll-mt-24" 
       aria-label="Work experience"
     >
@@ -153,7 +153,7 @@ export default function PortfolioLayout() {
           </header>
 
           <main id="content" className="pt-16 lg:w-1/2 lg:py-16">
-            <ExperienceSection />
+            <ProjectsSection />
           </main>
         </div>
       </div>
