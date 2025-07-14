@@ -16,7 +16,7 @@ const ContactSection: React.FC = () => {
           <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center px-4 sm:px-6">
             
             {/* Left Side */}
-            <div className="space-y-8 text-center lg:text-left">
+            <div className="space-y-8 text-center lg:text-left cursor-default">
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-tight">
                   Let&apos;s Connect
@@ -27,44 +27,50 @@ const ContactSection: React.FC = () => {
                 Ready to bring your ideas to life? Let&apos;s create something extraordinary together.
               </p>
               <div className="flex justify-center lg:justify-start">
-                <button className="inline-flex items-center gap-4 bg-primary text-primary-foreground px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-medium text-base sm:text-lg hover:bg-primary/90 transition-colors">
+                <a
+                  href="mailto:srikailaash.pr@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-4 bg-primary text-primary-foreground px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-medium text-base sm:text-lg hover:bg-primary/90 transition-colors"
+                >
                   <FlipText text="Start a project" />
                   <ArrowUpRight className="w-5 sm:w-6 h-5 sm:h-6" />
-                </button>
+                </a>
               </div>
+
             </div>
 
             {/* Right Side */}
             <div className="space-y-8 md:space-y-10">
               {/* Email */}
-              <div className="flex items-start sm:items-center gap-4">
+              <div className="flex items-start sm:items-center gap-4 cursor-default">
                 <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
                   <Mail className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Email</div>
                   <div className="text-foreground text-base sm:text-lg font-medium break-words">
-                    hello@yourname.com
+                    srikailaash.pr@gmail.com
                   </div>
                 </div>
               </div>
 
               {/* Location */}
-              <div className="flex items-start sm:items-center gap-4">
+              <div className="flex items-start sm:items-center gap-4 cursor-default">
                 <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
                   <MapPin className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Location</div>
                   <div className="text-foreground text-base sm:text-lg font-medium">
-                    San Francisco, CA
+                    India
                   </div>
                 </div>
               </div>
 
               {/* Social */}
               <div className="pt-6 sm:pt-8">
-                <div className="text-sm text-muted-foreground mb-4">Follow</div>
+                <div className="text-sm text-muted-foreground mb-4 cursor-default">Follow</div>
                 <div className="flex gap-6 sm:gap-8">
                   <a
                     href="https://www.linkedin.com/in/srikailaashkumar-s/"
@@ -76,7 +82,7 @@ const ContactSection: React.FC = () => {
                     <BsLinkedin size={40}/>
                   </a>
                   <a
-                    href="https://github.com/yourusername"
+                    href="https://github.com/maximistic"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub"
@@ -85,7 +91,7 @@ const ContactSection: React.FC = () => {
                     <BsGithub size={40}/>
                   </a>
                   <a
-                    href="https://twitter.com/yourhandle"
+                    href="/err"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Twitter/X"
