@@ -1,76 +1,101 @@
 'use client';
 
-import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import FlipText from '@/components/ui/FlipText';
+import { BsTwitterX, BsGithub, BsLinkedin } from "react-icons/bs";
 
 const ContactSection: React.FC = () => {
   return (
-    <div id="contact" className="relative h-[100vh] w-full bg-background text-foreground" style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}>
-      <div className="fixed bottom-0 h-[100vh] w-full">
-        <div className="h-full flex items-center justify-center px-6 sm:px-8 lg:px-12">
-          <div className="max-w-7xl w-full mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-
+    <div
+      id="contact"
+      className="relative min-h-screen w-full bg-background text-foreground"
+      style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
+    >
+      <div className="fixed bottom-0 h-screen w-full">
+        <div className="h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center px-4 sm:px-6">
+            
             {/* Left Side */}
-            <div className="space-y-10">
+            <div className="space-y-8 text-center lg:text-left">
               <div className="space-y-4">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-tight">
                   Let&apos;s Connect
                 </h1>
-                <div className="w-24 h-px bg-border" />
+                <div className="w-24 sm:w-20 lg:w-40 h-px mx-auto lg:mx-0 bg-border" />
               </div>
-              <p className="text-muted-foreground text-xl sm:text-2xl leading-relaxed max-w-lg">
+              <p className="text-muted-foreground text-lg sm:text-xl md:text-2xl leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Ready to bring your ideas to life? Let&apos;s create something extraordinary together.
               </p>
-              <button className="inline-flex items-center gap-4 bg-primary text-primary-foreground px-10 py-5 rounded-full font-medium text-lg hover:bg-primary/90 transition-colors">
-                <FlipText text="Start a project" />
-                <ArrowUpRight className="w-6 h-6" />
-              </button>
+              <div className="flex justify-center lg:justify-start">
+                <button className="inline-flex items-center gap-4 bg-primary text-primary-foreground px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-medium text-base sm:text-lg hover:bg-primary/90 transition-colors">
+                  <FlipText text="Start a project" />
+                  <ArrowUpRight className="w-5 sm:w-6 h-5 sm:h-6" />
+                </button>
+              </div>
             </div>
 
             {/* Right Side */}
-            <div className="space-y-8 lg:space-y-10">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
-                  <Mail className="w-6 h-6" />
+            <div className="space-y-8 md:space-y-10">
+              {/* Email */}
+              <div className="flex items-start sm:items-center gap-4">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
+                  <Mail className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Email</div>
-                  <div className="text-foreground text-lg font-medium">hello@yourname.com</div>
+                  <div className="text-foreground text-base sm:text-lg font-medium break-words">
+                    hello@yourname.com
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground mb-1">Phone</div>
-                  <div className="text-foreground text-lg font-medium">+1 (555) 123-4567</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
-                  <MapPin className="w-6 h-6" />
+              {/* Location */}
+              <div className="flex items-start sm:items-center gap-4">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
+                  <MapPin className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Location</div>
-                  <div className="text-foreground text-lg font-medium">San Francisco, CA</div>
+                  <div className="text-foreground text-base sm:text-lg font-medium">
+                    San Francisco, CA
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-8">
+              {/* Social */}
+              <div className="pt-6 sm:pt-8">
                 <div className="text-sm text-muted-foreground mb-4">Follow</div>
-                <div className="flex gap-8">
-                  {['LinkedIn', 'GitHub', 'Twitter'].map((platform) => (
-                    <div key={platform}>
-                      <FlipText text={platform} className="text-muted-foreground hover:text-foreground transition-colors text-lg cursor-pointer" />
-                    </div>
-                  ))}
+                <div className="flex gap-6 sm:gap-8">
+                  <a
+                    href="https://www.linkedin.com/in/srikailaashkumar-s/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="text-muted-foreground hover:text-foreground transition-colors text-2xl"
+                  >
+                    <BsLinkedin size={40}/>
+                  </a>
+                  <a
+                    href="https://github.com/yourusername"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="text-muted-foreground hover:text-foreground transition-colors text-2xl"
+                  >
+                    <BsGithub size={40}/>
+                  </a>
+                  <a
+                    href="https://twitter.com/yourhandle"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter/X"
+                    className="text-muted-foreground hover:text-foreground transition-colors text-2xl"
+                  >
+                    <BsTwitterX size={40}/>
+                  </a>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
