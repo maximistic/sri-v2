@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { Code2 } from 'lucide-react';
 
 interface Dimensions {
   width: number;
@@ -95,17 +94,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     },
   };
 
-  const logoVariants = {
-    hidden: { scale: 0, rotate: -180 },
-    visible: {
-      scale: 1,
-      rotate: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.43, 0.13, 0.23, 0.96],
-      },
-    },
-  };
+
 
   return (
     <motion.div
@@ -113,7 +102,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-[99] flex items-center justify-center"
+      className="fixed top-0 left-0 w-full h-full bg-black-300 z-[99] flex items-center justify-center"
     >
       {dimension.width > 0 && (
         <>
@@ -124,40 +113,13 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             initial="hidden"
             animate="visible"
           >
-            {/* Logo */}
-            <motion.div
-              className="flex items-center space-x-3"
-              variants={itemVariants}
-            >
-              <motion.div
-                variants={logoVariants}
-                className="p-3 rounded-xl bg-blue-400 text-white"
-              >
-                <Code2 size={32} />
-              </motion.div>
-              <motion.div
-                variants={itemVariants}
-                className="text-3xl font-bold tracking-tight text-white"
-              >
-                Portfolio
-              </motion.div>
-            </motion.div>
-
-            {/* Loading Text */}
-            <motion.div
-              variants={itemVariants}
-              className="text-blue-200 text-sm tracking-wide uppercase"
-            >
-              Loading ...
-            </motion.div>
-
             {/* Progress Bar */}
             <motion.div
               variants={itemVariants}
               className="w-64 h-1 bg-slate-700 rounded-full overflow-hidden relative"
             >
               <motion.div
-                className="h-full bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"
+                className="h-full bg-slate-300 rounded-full"
                 initial={{ width: '0%' }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.1 }}
@@ -173,32 +135,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             {/* Progress Percentage */}
             <motion.div
               variants={itemVariants}
-              className="text-blue-300 text-xs font-mono"
+              className="text-slate-300 text-3xl font-mono"
             >
               {progress}%
-            </motion.div>
-
-            {/* Floating Dots */}
-            <motion.div
-              className="flex space-x-2"
-              variants={itemVariants}
-            >
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  className="w-2 h-2 bg-blue-400 rounded-full"
-                  animate={{
-                    y: [-5, 5, -5],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    delay: i * 0.2,
-                    ease: "easeInOut",
-                  }}
-                />
-              ))}
             </motion.div>
           </motion.div>
 
@@ -212,9 +151,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             />
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#1e293b" />
-                <stop offset="50%" stopColor="#334155" />
-                <stop offset="100%" stopColor="#1e293b" />
+                <stop offset="0%" stopColor="#000" />
+                <stop offset="50%" stopColor="#000" />
+                <stop offset="100%" stopColor="#000" />
               </linearGradient>
             </defs>
           </svg>
