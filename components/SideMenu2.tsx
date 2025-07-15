@@ -212,9 +212,9 @@ useLayoutEffect(() => {
 
         <div className="w-full max-w-4xl mx-auto mb-8 pt-8 md:pt-16 pb-8 md:pb-12 px-4 flex justify-center">
           <div className="flex flex-wrap justify-center space-x-6 sm:space-x-8 text-sm md:text-base text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors"><BsTwitterX size={24}/></a>
-            <a href="#" className="hover:text-foreground transition-colors"><BsLinkedin size={24}/></a>
-            <a href="#" className="hover:text-foreground transition-colors"><BsGithub size={25}/></a>
+            <a href="https://x.com/" className="hover:text-foreground transition-colors"><BsTwitterX size={24}/></a>
+            <a href="https://www.linkedin.com/in/srikailaashkumar-s/" className="hover:text-foreground transition-colors"><BsLinkedin size={24}/></a>
+            <a href="https://github.com/maximistic" className="hover:text-foreground transition-colors"><BsGithub size={25}/></a>
           </div>
         </div>
       </div>
