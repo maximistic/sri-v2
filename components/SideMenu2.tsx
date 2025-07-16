@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
-import { ModeToggle } from "@/app/components/ModeToggle";
+import { ModeToggle } from "@/components/ui/ModeToggle";
 import { BsTwitterX, BsGithub, BsLinkedin } from "react-icons/bs";
 
 interface MenuLink {
@@ -110,11 +110,13 @@ useLayoutEffect(() => {
     <div className="menu-container" ref={container}>
       {/* Menu Bar (Fixed Header) */}
       <div className="fixed top-0 left-0 w-screen p-4 md:p-8 flex justify-between items-center z-10">
+
         <div className="menu-logo">
           <Link href="/" className="text-foreground text-lg md:text-xl font-medium cursor-pointer">
             Sri
           </Link>
         </div>
+        
         <div className="flex items-center gap-4">
           {/* Theme Toggle */}
           <ModeToggle />

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { testimonials } from '@/lib';
-import GlowCard from '@/app/components/GlowCard';
+import GlowCard from '@/components/ui/GlowCard';
 
 const Testimonials: React.FC = () => {
   return (
