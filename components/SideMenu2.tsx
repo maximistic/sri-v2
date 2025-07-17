@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import { BsTwitterX, BsGithub, BsLinkedin } from "react-icons/bs";
+import Header from "./Header";
 
 interface MenuLink {
   path: string;
@@ -19,7 +20,7 @@ const menuLinks: MenuLink[] = [
   { path: "#contact", label: "Contact" },
 ];
 
-const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
+export const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
   <div className="flex flex-col justify-center items-center w-6 h-6 cursor-pointer">
     <motion.div
       className="w-6 h-0.5 bg-foreground mb-2"
@@ -70,29 +71,28 @@ function SideMenu() {
   };
 
   // GSAP Animation Setup
-useLayoutEffect(() => {
-  if (container.current) {
-    const items = container.current.querySelectorAll(".menu-link-item-holder");
+  useLayoutEffect(() => {
+    if (container.current) {
+      const items = container.current.querySelectorAll(".menu-link-item-holder");
 
-    gsap.set(items, { y: 75 });
+      gsap.set(items, { y: 75 });
 
-    tl.current = gsap
-      .timeline({ paused: true })
-      .to(container.current.querySelector(".menu-overlay"), {
-        duration: 1.25,
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-        ease: "power4.inOut",
-      })
-      .to(items, {
-        y: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power4.inOut",
-        delay: -0.75,
-      });
-  }
-}, []);
-
+      tl.current = gsap
+        .timeline({ paused: true })
+        .to(container.current.querySelector(".menu-overlay"), {
+          duration: 1.25,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          ease: "power4.inOut",
+        })
+        .to(items, {
+          y: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power4.inOut",
+          delay: -0.75,
+        });
+    }
+  }, []);
 
   // Handle Menu Open/Close
   useEffect(() => {
@@ -105,28 +105,9 @@ useLayoutEffect(() => {
     }
   }, [isMenuOpen]);
 
-
   return (
     <div className="menu-container" ref={container}>
-      {/* Menu Bar (Fixed Header) */}
-      <div className="fixed top-0 left-0 w-screen p-4 md:p-8 flex justify-between items-center z-10">
-
-        <div className="menu-logo">
-          <Link href="/" className="text-foreground text-lg md:text-xl font-medium cursor-pointer">
-            Sri
-          </Link>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          {/* Theme Toggle */}
-          <ModeToggle />
-          
-          {/* Menu Toggle */}
-          <div className="menu-open cursor-pointer p-2" onClick={toggleMenu}>
-            <HamburgerIcon isOpen={isMenuOpen} />
-          </div>
-        </div>
-      </div>
+      <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
       {/* Menu Overlay (Fullscreen) */}
       <div
