@@ -6,7 +6,7 @@ import GlowCard from '@/components/ui/GlowCard';
 
 const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="flex justify-center items-center px-5 md:px-10 md:mt-40 mt-20 border-b-4 border-green-800">
+    <section id="testimonials" className="flex justify-center items-center px-5 md:px-10 md:mt-40 mt-2 py-4">
       <div className="w-full h-full md:px-10 px-5">
         <div className="flex flex-col items-center gap-5">
             <div className="py-2 px-4 rounded-full w-fit text-sm md:text-base text-nowrap">

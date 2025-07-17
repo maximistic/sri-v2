@@ -8,7 +8,7 @@ const ContactSection: React.FC = () => {
   return (
     <div
       id="contact"
-      className="relative min-h-screen w-full bg-background text-foreground"
+      className="relative min-h-screen w-full bg-secondary text-foreground"
       style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
     >
       <div className="fixed bottom-0 h-screen w-full">
