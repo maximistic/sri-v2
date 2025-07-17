@@ -17,7 +17,6 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   const [dimension, setDimension] = useState<Dimensions>({ width: 0, height: 0 });
   const [progress, setProgress] = useState(0);
 
-  
   useEffect(() => {
     const updateSize = () => {
       if (typeof window !== 'undefined') {
@@ -93,8 +92,6 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       },
     },
   };
-
-
 
   return (
     <motion.div
