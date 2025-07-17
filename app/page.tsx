@@ -12,9 +12,11 @@ import Testimonials from "../components/Testimonials";
 import Experience from "@/components/Experience";
 
 export default function Home() {
-  const { showPreloader, isLoading } = usePreloader(2500);
   useLenis();
-
+  
+  const { showPreloader, isLoading, isReady } = usePreloader(2500);
+  if (!isReady){ return null;} 
+  
   return (
     <div className="w-full min-h-screen">
       <AnimatePresence mode="wait">
