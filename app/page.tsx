@@ -8,7 +8,6 @@ import ContactSection from "../components/Contact";
 import SideMenu from "../components/SideMenu2";
 import ExperienceSection from "../components/About";
 import HeroSection from "../components/Hero";
-import Testimonials from "../components/Testimonials";
 import Experience from "@/components/Experience";
 
 export default function Home() {
@@ -28,7 +27,6 @@ export default function Home() {
       <HeroSection />
       <Experience />
       <ExperienceSection />
-      <Testimonials />
       <ContactSection />
     </div>
   );
