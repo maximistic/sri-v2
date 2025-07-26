@@ -130,8 +130,8 @@ const expCards : ExpItem[] = [
     review: "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
     imgPath: "/images/lady1.webp",
     logoPath: "/images/lady1.webp",
-    title: "Frontend Developer",
-    date: "January 2023 - Present",
+    title: "B.Tech in Computer Science",
+    date: "September 2021 - May 2025",
     responsibilities: [
       "Developed and maintained user-facing features for the Hostinger website.",
       "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
@@ -163,8 +163,6 @@ const expCards : ExpItem[] = [
     ],
   },
 ];
-
-// Export all
 
 export {
   socialImgs,

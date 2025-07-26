@@ -52,19 +52,18 @@ const ExperienceTimeline = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <div className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm mb-4">
-            Professional Journey
+          <div className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-2xl mb-4">
+            My Story So Far
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          {/* <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Experience
-          </h2>
+          </h2> */}
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A timeline of my career growth
+            From Classrooms to Codebases: A look at the Moments and Milestones
           </p>
         </motion.div>
 
         <div className="relative">
-          {/* Timeline Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-border hidden lg:block">
             <motion.div className="w-full bg-primary origin-top" style={{ height: timelineProgress }} />
           </div>
@@ -81,7 +80,6 @@ const ExperienceTimeline = () => {
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10"></div>
 
                   <div className="grid grid-cols-2 gap-16 items-center">
-                    {/* Review / Testimonial */}
                     <div className="timeline-card bg-card p-8 rounded-2xl border border-border">
                       <Quote className="w-8 h-8 text-muted-foreground mb-4" />
                       <blockquote className="text-muted-foreground text-lg leading-relaxed mb-6">
@@ -98,7 +96,6 @@ const ExperienceTimeline = () => {
                       </div>
                     </div>
 
-                    {/* Experience Card */}
                     <div className="timeline-card bg-card p-8 rounded-2xl border border-border">
                       <div className="flex items-start gap-4 mb-6">
                         <Image
@@ -149,7 +146,6 @@ const ExperienceTimeline = () => {
                   <div className="w-4 h-4 bg-primary rounded-full border-4 border-background flex-shrink-0"></div>
 
                   <div className="flex-1 space-y-6">
-                    {/* Experience Card */}
                     <div className="timeline-card bg-card p-6 rounded-2xl border border-border">
                       <div className="flex items-start gap-3 mb-4">
                         <Image
@@ -195,7 +191,6 @@ const ExperienceTimeline = () => {
                       </div>
                     </div>
 
-                    {/* Review / Testimonial */}
                     <div className="timeline-card bg-primary p-6 rounded-2xl text-primary-foreground">
                       <Quote className="w-6 h-6 text-muted-foreground mb-3" />
                       <blockquote className="text-sm leading-relaxed mb-4">

@@ -18,10 +18,7 @@ function Header({ isMenuOpen, toggleMenu }: HeaderProps) {
       </div>
       
       <div className="flex items-center gap-4">
-        {/* Theme Toggle */}
         <ModeToggle />
-        
-        {/* Menu Toggle */}
         <div className="menu-open cursor-pointer p-2" onClick={toggleMenu}>
           <HamburgerIcon isOpen={isMenuOpen} />
         </div>
