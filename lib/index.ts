@@ -5,13 +5,6 @@ interface NavLink {
   link: string;
 }
 
-interface Testimonial {
-  name: string;
-  mentions: string;
-  review: string;
-  imgPath: string;
-}
-
 interface SocialImage {
   name: string;
   imgPath: string;
@@ -50,51 +43,6 @@ const navLinks: NavLink[] = [
   { name: "Experience", link: "#experience" },
   { name: "Skills", link: "#skills" },
   { name: "Testimonials", link: "#testimonials" },
-];
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Esther Howard",
-    mentions: "@estherhoward",
-    review:
-      "I can't say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
-    imgPath: "/images/lady1.webp",
-  },
-  {
-    name: "Wade Warren",
-    mentions: "@wadewarren",
-    review:
-      "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-    imgPath: "/images/man1.webp",
-  },
-  {
-    name: "Guy Hawkins",
-    mentions: "@guyhawkins",
-    review:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    imgPath: "/images/man2.webp",
-  },
-  {
-    name: "Marvin McKinney",
-    mentions: "@marvinmckinney",
-    review:
-      "Adrian was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that’s both modern and easy to navigate. Fantastic work overall.",
-    imgPath: "/images/man3.webp",
-  },
-  {
-    name: "Floyd Miles",
-    mentions: "@floydmiles",
-    review:
-      "Adrian's expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
-    imgPath: "/images/lady2.webp",
-  },
-  {
-    name: "Albert Flores",
-    mentions: "@albertflores",
-    review:
-      "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-    imgPath: "/images/lady3.webp",
-  },
 ];
 
 const socialImgs: SocialImage[] = [
@@ -219,7 +167,6 @@ const expCards : ExpItem[] = [
 // Export all
 
 export {
-  testimonials,
   socialImgs,
   navLinks,
   experiences,
