@@ -174,8 +174,6 @@ const ExperienceTimeline = () => {
                         </div>
                       </div>
 
-
-
                       <div className="space-y-3">
                         <div>
                           <h4 className="font-semibold mb-2 text-sm">Key Responsibilities</h4>

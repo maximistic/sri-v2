@@ -16,7 +16,7 @@ const menuLinks: MenuLink[] = [
   { path: "#", label: "Home" },
   { path: "#experience", label: "Experience" },
   { path: "#projects", label: "Projects" },
-  { path: "#testimonials", label: "Testimonials" },
+  { path: "#certificates", label: "Certificates" },
   { path: "#contact", label: "Contact" },
 ];
 

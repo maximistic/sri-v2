@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { experiences } from '@/lib';
 import Image from 'next/image';
-
+import { motion } from 'framer-motion';
 
 function ProjectsSection() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -121,6 +121,19 @@ function ProjectsSection() {
 export default function PortfolioLayout() {
   return (
     <div className="bg-background leading-relaxed text-muted-foreground antialiased selection:bg-primary selection:text-primary-foreground">
+            <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-20"
+      >
+        <div className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-2xl mb-4">
+          Projects & Builds
+        </div>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          A showcase of the ideas I&apos;ve brought to life — blending creativity, code, and curiosity to solve real problems and explore new technologies.
+        </p>
+      </motion.div>
       <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-16">
