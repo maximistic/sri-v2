@@ -36,7 +36,17 @@ interface ExpItem {
   date: string;
   responsibilities: string[];
 }
-// Data
+
+interface Certificate {
+  id: number;
+  title: string;
+  organization: string;
+  date: string;
+  image: string;
+  description: string;
+}
+
+// Data Arrays
 
 const navLinks: NavLink[] = [
   { name: "Work", link: "#work" },
@@ -125,7 +135,7 @@ const experiences: ExperienceItem[] = [
   }
 ];
 
-const expCards : ExpItem[] = [
+const expCards: ExpItem[] = [
   {
     review: "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
     imgPath: "/images/lady1.webp",
@@ -164,9 +174,63 @@ const expCards : ExpItem[] = [
   },
 ];
 
+const certificates: Certificate[] = [
+  {
+    id: 1,
+    title: "Full Stack Web Development",
+    organization: "Tech Academy",
+    date: "2024",
+    image: "/certificates/cert1.jpg",
+    description: "Complete web development certification covering React, Node.js, and databases"
+  },
+  {
+    id: 2,
+    title: "Cloud Architecture",
+    organization: "AWS",
+    date: "2023",
+    image: "/certificates/cert2.jpg",
+    description: "Advanced cloud computing and architecture principles"
+  },
+  {
+    id: 3,
+    title: "UI/UX Design",
+    organization: "Design Institute",
+    date: "2023",
+    image: "/certificates/cert3.jpg",
+    description: "User interface and experience design fundamentals"
+  },
+  {
+    id: 4,
+    title: "Machine Learning",
+    organization: "Data Science Pro",
+    date: "2024",
+    image: "/certificates/cert4.jpg",
+    description: "Machine learning algorithms and implementation"
+  },
+  {
+    id: 5,
+    title: "Cybersecurity",
+    organization: "Security First",
+    date: "2023",
+    image: "/certificates/cert5.jpg",
+    description: "Information security and ethical hacking principles"
+  },
+  {
+    id: 6,
+    title: "Mobile Development",
+    organization: "Mobile Masters",
+    date: "2024",
+    image: "/certificates/cert6.jpg",
+    description: "iOS and Android application development"
+  }
+];
+
+// Exports
+
 export {
   socialImgs,
   navLinks,
   experiences,
   expCards,
+  certificates,
 };
