@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Easing } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
 interface Dimensions {
@@ -11,6 +11,10 @@ interface Dimensions {
 interface PreloaderProps {
   onComplete?: () => void;
 }
+
+// Define easing values with correct type
+const customEase: Easing = [0.76, 0, 0.24, 1];
+const contentEase: Easing = [0.43, 0.13, 0.23, 0.96];
 
 export default function Preloader({ onComplete }: PreloaderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -46,17 +50,17 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     return () => clearInterval(timer);
   }, [onComplete]);
 
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width/2} ${dimension.height + 300} 0 ${dimension.height} L0 0`;
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width/2} ${dimension.height} 0 ${dimension.height} L0 0`;
+  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height} L0 0`;
+  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
 
   const curve = {
     initial: {
       d: initialPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] }
+      transition: { duration: 0.7, ease: customEase }
     },
     exit: {
       d: targetPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 }
+      transition: { duration: 0.7, ease: customEase, delay: 0.3 }
     }
   };
 
@@ -64,11 +68,10 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     initial: { top: 0 },
     exit: {
       top: "-100vh",
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
+      transition: { duration: 0.8, ease: customEase, delay: 0.1 }
     }
   };
 
-  // Content animations
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -87,7 +90,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: [0.43, 0.13, 0.23, 0.96],
+        ease: contentEase,
       },
     },
   };
@@ -102,14 +105,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     >
       {dimension.width > 0 && (
         <>
-          {/* Main Content */}
           <motion.div
             className="relative z-10 flex flex-col items-center space-y-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* Progress Bar */}
             <motion.div
               variants={itemVariants}
               className="w-64 h-1 bg-slate-700 rounded-full overflow-hidden relative"
@@ -128,7 +129,6 @@ export default function Preloader({ onComplete }: PreloaderProps) {
               />
             </motion.div>
 
-            {/* Progress Percentage */}
             <motion.div
               variants={itemVariants}
               className="text-slate-300 text-3xl font-mono"
@@ -137,7 +137,6 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             </motion.div>
           </motion.div>
 
-          {/* Curve Background */}
           <svg className="absolute top-0 left-0 w-full h-[calc(100%+300px)] z-0 pointer-events-none">
             <motion.path
               variants={curve}
