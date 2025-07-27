@@ -9,6 +9,7 @@ import SideMenu from "../components/SideMenu2";
 import ExperienceSection from "../components/About";
 import HeroSection from "../components/Hero";
 import Experience from "@/components/Experience";
+import Certificate from "@/components/Certificates";
 
 export default function Home() {
   useLenis();
@@ -27,6 +28,7 @@ export default function Home() {
       <HeroSection />
       <Experience />
       <ExperienceSection />
+      <Certificate />
       <ContactSection />
     </div>
   );
