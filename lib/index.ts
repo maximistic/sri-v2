@@ -1,21 +1,11 @@
 // Interfaces
 
-interface NavLink {
-  name: string;
-  link: string;
-}
-
-interface SocialImage {
-  name: string;
-  imgPath: string;
-}
-
 interface ExperienceLink {
   label: string;
   url: string;
 }
 
-interface ExperienceItem {
+interface ProjectItem {
   id: string;
   dateRange: string;
   dateLabel: string;
@@ -30,7 +20,6 @@ interface ExperienceItem {
 
 interface ExpItem {
   review: string;
-  imgPath: string;
   logoPath: string;
   title: string;
   date: string;
@@ -48,21 +37,7 @@ interface Certificate {
 
 // Data Arrays
 
-const navLinks: NavLink[] = [
-  { name: "Work", link: "#work" },
-  { name: "Experience", link: "#experience" },
-  { name: "Skills", link: "#skills" },
-  { name: "Testimonials", link: "#testimonials" },
-];
-
-const socialImgs: SocialImage[] = [
-  { name: "insta", imgPath: "/images/insta.png" },
-  { name: "fb", imgPath: "/images/fb.png" },
-  { name: "x", imgPath: "/images/x.png" },
-  { name: "linkedin", imgPath: "/images/linkedin.png" },
-];
-
-const experiences: ExperienceItem[] = [
+const projects: ProjectItem[] = [
   {
     id: 'klaviyo',
     dateRange: '2024 — Present',
@@ -70,7 +45,7 @@ const experiences: ExperienceItem[] = [
     title: 'Senior Frontend Engineer, Accessibility',
     company: 'Klaviyo',
     companyUrl: 'https://www.klaviyo.com',
-    description: 'Build and maintain critical components used to construct Klaviyo\'s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.',
+    description: 'coming up',
     technologies: ['JavaScript', 'TypeScript', 'React', 'Storybook']
   },
   {
@@ -81,8 +56,8 @@ const experiences: ExperienceItem[] = [
     company: 'Upstatement',
     companyUrl: 'https://upstatement.com',
     positions: ['Senior Engineer', 'Engineer'],
-    description: 'Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diverse array of projects for clients including Harvard Business School, Everytown for Gun Safety, Pratt Institute, Koala Health, Vanderbilt University, The 19th News, and more. Provide leadership within engineering department through close collaboration, knowledge shares, and spearheading the development of internal tools.',
-    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React', 'Next.js', 'React Native', 'WordPress', 'Contentful', 'Node.js', 'PHP']
+    description: 'coming up',
+    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React']
   },
   {
     id: 'apple',
@@ -91,7 +66,7 @@ const experiences: ExperienceItem[] = [
     title: 'UI Engineer Co-op',
     company: 'Apple',
     companyUrl: 'https://www.apple.com/apple-music/',
-    description: 'Developed and styled interactive web apps for Apple Music, including the user interface of Apple Music\'s embeddable web player widget for in-browser user authorization and full song playback.',
+    description: 'coming up',
     technologies: ['Ember', 'SCSS', 'JavaScript', 'MusicKit.js'],
     links: [
       { label: 'MusicKit.js', url: 'https://developer.apple.com/documentation/musickitjs' },
@@ -106,7 +81,7 @@ const experiences: ExperienceItem[] = [
     title: 'Developer',
     company: 'Scout Studio',
     companyUrl: 'https://scout.camd.northeastern.edu/',
-    description: 'Collaborated with other student designers and engineers on pro-bono projects to create new brands, design systems, and websites for organizations in the community.',
+    description: 'coming up',
     technologies: ['Jekyll', 'SCSS', 'JavaScript', 'WordPress']
   },
   {
@@ -116,7 +91,7 @@ const experiences: ExperienceItem[] = [
     title: 'Software Engineer Co-op',
     company: 'Starry',
     companyUrl: 'https://starry.com/',
-    description: 'Worked with the UI team to engineer and improve major features of Starry\'s customer-facing Android app.',
+    description: 'coming up',
     technologies: ['Cordova', 'Backbone', 'JavaScript', 'CSS'],
     links: [
       { label: 'Android App', url: 'https://play.google.com/store/apps/details?id=com.starry.management&hl=en_US&gl=US' },
@@ -130,15 +105,14 @@ const experiences: ExperienceItem[] = [
     title: 'Creative Technologist Co-op',
     company: 'MullenLowe U.S.',
     companyUrl: 'https://us.mullenlowe.com/',
-    description: 'Developed, maintained, and shipped production code for client websites. Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more.',
+    description: 'coming up',
     technologies: ['HTML', 'CSS', 'JavaScript', 'jQuery']
   }
 ];
 
 const expCards: ExpItem[] = [
   {
-    review: "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-    imgPath: "/images/lady1.webp",
+    review: "sri brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
     logoPath: "/images/lady1.webp",
     title: "B.Tech in Computer Science",
     date: "September 2021 - May 2025",
@@ -149,8 +123,7 @@ const expCards: ExpItem[] = [
     ],
   },
   {
-    review: "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-    imgPath: "/images/lady1.webp",
+    review: "sri's contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
     logoPath: "/images/lady1.webp",
     title: "Full Stack Developer",
     date: "June 2020 - December 2023",
@@ -161,8 +134,7 @@ const expCards: ExpItem[] = [
     ],
   },
   {
-    review: "Adrian's work on Appwrite's mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-    imgPath: "/images/lady1.webp",
+    review: "sri's work on Appwrite's mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
     logoPath: "/images/lady1.webp",
     title: "React Native Developer",
     date: "March 2019 - May 2020",
@@ -228,9 +200,7 @@ const certificates: Certificate[] = [
 // Exports
 
 export {
-  socialImgs,
-  navLinks,
-  experiences,
+  projects,
   expCards,
   certificates,
 };

@@ -6,7 +6,7 @@ import useLenis from "../hooks/useLenis";
 import { usePreloader } from "../hooks/usePreloader";
 import ContactSection from "../components/Contact";
 import SideMenu from "../components/SideMenu2";
-import ExperienceSection from "../components/About";
+import Projects from "@/components/Projects";
 import HeroSection from "../components/Hero";
 import Experience from "@/components/Experience";
 import Certificate from "@/components/Certificates";
@@ -27,7 +27,7 @@ export default function Home() {
       </header>
       <HeroSection />
       <Experience />
-      <ExperienceSection />
+      <Projects />
       <Certificate />
       <ContactSection />
     </div>

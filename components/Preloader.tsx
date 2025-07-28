@@ -12,7 +12,6 @@ interface PreloaderProps {
   onComplete?: () => void;
 }
 
-// Define easing values with correct type
 const customEase: Easing = [0.76, 0, 0.24, 1];
 const contentEase: Easing = [0.43, 0.13, 0.23, 0.96];
 

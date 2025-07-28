@@ -3,7 +3,7 @@
 import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link';
-import { experiences } from '@/lib';
+import { projects } from '@/lib';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -18,7 +18,7 @@ function ProjectsSection() {
     >
       <div>
         <ol className="group/list">
-          {experiences.map((experience) => (
+          {projects.map((experience) => (
             <li key={experience.id} className="mb-12">
               <div 
                 className={`group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 ${
@@ -118,7 +118,7 @@ function ProjectsSection() {
   );
 }
 
-export default function PortfolioLayout() {
+export default function Projects() {
   return (
     <div className="bg-background leading-relaxed text-muted-foreground antialiased selection:bg-primary selection:text-primary-foreground">
             <motion.div
