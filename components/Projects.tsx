@@ -39,7 +39,7 @@ function ProjectsSection() {
                     <div>
                       <a 
                         className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary focus-visible:text-primary group/link text-base" 
-                        href={experience.companyUrl} 
+                        href={experience.projectUrl} 
                         target="_blank" 
                         rel="noreferrer noopener" 
                         aria-label={`${experience.title} at ${experience.company} (opens in a new tab)`}

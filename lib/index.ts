@@ -1,6 +1,6 @@
 // Interfaces
 
-interface ExperienceLink {
+interface ProjectLink {
   label: string;
   url: string;
 }
@@ -11,11 +11,11 @@ interface ProjectItem {
   dateLabel: string;
   title: string;
   company: string;
-  companyUrl: string;
+  projectUrl: string;
   description: string;
   positions?: string[];
   technologies: string[];
-  links?: ExperienceLink[];
+  links?: ProjectLink[];
 }
 
 interface ExpItem {
@@ -44,7 +44,7 @@ const projects: ProjectItem[] = [
     dateLabel: '2024 to Present',
     title: 'Senior Frontend Engineer, Accessibility',
     company: 'Klaviyo',
-    companyUrl: 'https://www.klaviyo.com',
+    projectUrl: 'https://www.klaviyo.com',
     description: 'coming up',
     technologies: ['JavaScript', 'TypeScript', 'React', 'Storybook']
   },
@@ -54,7 +54,7 @@ const projects: ProjectItem[] = [
     dateLabel: '2018 to 2024',
     title: 'Lead Engineer',
     company: 'Upstatement',
-    companyUrl: 'https://upstatement.com',
+    projectUrl: 'https://upstatement.com',
     positions: ['Senior Engineer', 'Engineer'],
     description: 'coming up',
     technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React']
@@ -65,7 +65,7 @@ const projects: ProjectItem[] = [
     dateLabel: 'July to December 2017',
     title: 'UI Engineer Co-op',
     company: 'Apple',
-    companyUrl: 'https://www.apple.com/apple-music/',
+    projectUrl: 'https://www.apple.com/apple-music/',
     description: 'coming up',
     technologies: ['Ember', 'SCSS', 'JavaScript', 'MusicKit.js'],
     links: [
@@ -80,7 +80,7 @@ const projects: ProjectItem[] = [
     dateLabel: '2016 to 2017',
     title: 'Developer',
     company: 'Scout Studio',
-    companyUrl: 'https://scout.camd.northeastern.edu/',
+    projectUrl: 'https://scout.camd.northeastern.edu/',
     description: 'coming up',
     technologies: ['Jekyll', 'SCSS', 'JavaScript', 'WordPress']
   },
@@ -90,7 +90,7 @@ const projects: ProjectItem[] = [
     dateLabel: 'July to December 2016',
     title: 'Software Engineer Co-op',
     company: 'Starry',
-    companyUrl: 'https://starry.com/',
+    projectUrl: 'https://starry.com/',
     description: 'coming up',
     technologies: ['Cordova', 'Backbone', 'JavaScript', 'CSS'],
     links: [
@@ -104,7 +104,7 @@ const projects: ProjectItem[] = [
     dateLabel: 'July to December 2015',
     title: 'Creative Technologist Co-op',
     company: 'MullenLowe U.S.',
-    companyUrl: 'https://us.mullenlowe.com/',
+    projectUrl: 'https://us.mullenlowe.com/',
     description: 'coming up',
     technologies: ['HTML', 'CSS', 'JavaScript', 'jQuery']
   }
