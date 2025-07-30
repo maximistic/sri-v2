@@ -10,7 +10,7 @@ interface ProjectItem {
   dateRange: string;
   dateLabel: string;
   title: string;
-  company: string;
+  domain: string;
   projectUrl: string;
   description: string;
   positions?: string[];
@@ -21,7 +21,10 @@ interface ProjectItem {
 interface ExpItem {
   review: string;
   logoPath: string;
+  reviewer: string;
   title: string;
+  institute: string;
+  engType?: string[];
   date: string;
   responsibilities: string[];
 }
@@ -39,109 +42,125 @@ interface Certificate {
 
 const projects: ProjectItem[] = [
   {
-    id: 'klaviyo',
+    id: 'project 1',
     dateRange: '2024 — Present',
     dateLabel: '2024 to Present',
-    title: 'Senior Frontend Engineer, Accessibility',
-    company: 'Klaviyo',
-    projectUrl: 'https://www.klaviyo.com',
+    title: 'project 1',
+    domain: 'domain',
+    projectUrl: '/not-found',
     description: 'coming up',
-    technologies: ['JavaScript', 'TypeScript', 'React', 'Storybook']
+    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React'],
+    links: [
+      { label: 'Source Code', url: 'https://github.com/maximistic' }
+    ]
   },
   {
-    id: 'upstatement',
+    id: 'project 2',
     dateRange: '2018 — 2024',
     dateLabel: '2018 to 2024',
-    title: 'Lead Engineer',
-    company: 'Upstatement',
-    projectUrl: 'https://upstatement.com',
-    positions: ['Senior Engineer', 'Engineer'],
+    title: 'project 2',
+    domain: 'domain',
+    projectUrl: '/not-found',
     description: 'coming up',
-    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React']
+    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React'],
+    links: [
+      { label: 'Source Code', url: 'https://github.com/maximistic' }
+    ]
   },
   {
-    id: 'apple',
+    id: 'project 3',
     dateRange: 'July — Dec 2017',
     dateLabel: 'July to December 2017',
-    title: 'UI Engineer Co-op',
-    company: 'Apple',
-    projectUrl: 'https://www.apple.com/apple-music/',
+    title: 'project 3',
+    domain: 'domain',
+    projectUrl: '/not-found',
     description: 'coming up',
-    technologies: ['Ember', 'SCSS', 'JavaScript', 'MusicKit.js'],
+    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React'],
     links: [
-      { label: 'MusicKit.js', url: 'https://developer.apple.com/documentation/musickitjs' },
-      { label: '9to5Mac', url: 'https://9to5mac.com/2018/06/03/apple-music-embeddable-web-player-listen-browser/' },
-      { label: 'The Verge', url: 'https://www.theverge.com/2017/10/5/16433770/facebook-messenger-apple-music-bot-song-streaming' }
+      { label: 'Source Code', url: 'https://github.com/maximistic' }
     ]
   },
   {
-    id: 'scout',
+    id: 'project 4',
     dateRange: '2016 — 2017',
     dateLabel: '2016 to 2017',
-    title: 'Developer',
-    company: 'Scout Studio',
-    projectUrl: 'https://scout.camd.northeastern.edu/',
+    title: 'project 4',
+    domain: 'domain',
+    projectUrl: '/not-found',
     description: 'coming up',
-    technologies: ['Jekyll', 'SCSS', 'JavaScript', 'WordPress']
-  },
-  {
-    id: 'starry',
-    dateRange: 'July — Dec 2016',
-    dateLabel: 'July to December 2016',
-    title: 'Software Engineer Co-op',
-    company: 'Starry',
-    projectUrl: 'https://starry.com/',
-    description: 'coming up',
-    technologies: ['Cordova', 'Backbone', 'JavaScript', 'CSS'],
+    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React'],
     links: [
-      { label: 'Android App', url: 'https://play.google.com/store/apps/details?id=com.starry.management&hl=en_US&gl=US' },
-      { label: 'ScreenTime 2.0', url: 'https://starry.com/blog/product/whats-new-screentime-just-got-better-for-parents' }
+      { label: 'Source Code', url: 'https://github.com/maximistic' }
     ]
   },
   {
-    id: 'mullenlowe',
+    id: 'project 5',
+    dateRange: 'July — Dec 2016',
+    dateLabel: 'July to December 2016',
+    title: 'project 5',
+    domain: 'domain',
+    projectUrl: '/not-found',
+    description: 'coming up',
+    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React'],
+    links: [
+      { label: 'Source Code', url: 'https://github.com/maximistic' }
+    ]
+  },
+  {
+    id: 'project 6',
     dateRange: 'July — Dec 2015',
     dateLabel: 'July to December 2015',
-    title: 'Creative Technologist Co-op',
-    company: 'MullenLowe U.S.',
-    projectUrl: 'https://us.mullenlowe.com/',
+    title: 'project 6',
+    domain: 'domain',
+    projectUrl: '/not-found',
     description: 'coming up',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'jQuery']
+    technologies: ['JavaScript', 'TypeScript', 'HTML & SCSS', 'React'],
+    links: [
+      { label: 'Source Code', url: 'https://github.com/maximistic' }
+    ]
   }
 ];
 
 const expCards: ExpItem[] = [
   {
     review: "sri brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-    logoPath: "/images/lady1.webp",
+    logoPath: "/images/avv.webp",
+    reviewer: "/images/lady3.webp",
     title: "B.Tech in Computer Science",
+    institute: "Amrita Vishwa Vidyapeetham",
+    engType: ['Full-Time', 'On-Site'],
     date: "September 2021 - May 2025",
     responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
+      "Completed key coursework in data structures, algorithms, and system design.",
+      "Built academic projects in teams, applying real-world problem-solving.",
+      "Explored new technologies beyond the syllabus through self-initiated learning."
     ],
+
   },
   {
-    review: "sri's contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
+    review: "coming up",
     logoPath: "/images/lady1.webp",
-    title: "Full Stack Developer",
+    reviewer: "/images/lady3.webp",
+    title: "coming up",
+    institute: "Tech University",
+    engType: ['Full-Time', 'On-Site'],
     date: "June 2020 - December 2023",
     responsibilities: [
       "Led the development of Docker's web applications, focusing on scalability.",
-      "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-      "Contributed to open-source projects that were used with the Docker ecosystem.",
+      "Worked with backend engineers to integrate APIs seamlessly with the frontend."
     ],
   },
   {
-    review: "sri's work on Appwrite's mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
+    review: "coming up",
     logoPath: "/images/lady1.webp",
-    title: "React Native Developer",
+    reviewer: "/images/lady3.webp",
+    title: "coming up",
+    institute: "Tech University",
+    engType: ['Full-Time', 'On-Site'],
     date: "March 2019 - May 2020",
     responsibilities: [
       "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-      "Improved app performance and user experience through code optimization and testing.",
-      "Coordinated with the product team to implement features based on feedback.",
+      "Improved app performance and user experience through code optimization and testing."
     ],
   },
 ];
