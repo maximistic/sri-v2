@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { expCards } from '@/lib';
-import { MapPin, Calendar, Building2, Quote } from 'lucide-react';
+import { MapPin, Calendar, Building2 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,9 +55,6 @@ const ExperienceTimeline = () => {
           <div className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-2xl mb-4">
             My Story So Far
           </div>
-          {/* <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Experience
-          </h2> */}
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             From Classrooms to Codebases: A look at the Moments and Milestones
           </p>
@@ -81,13 +78,18 @@ const ExperienceTimeline = () => {
 
                   <div className="grid grid-cols-2 gap-16 items-center">
                     <div className="timeline-card bg-card p-8 rounded-2xl border border-border">
-                      <Quote className="w-8 h-8 text-muted-foreground mb-4" />
                       <blockquote className="text-muted-foreground text-lg leading-relaxed mb-6">
                         &ldquo;{card.review}&rdquo;
                       </blockquote>
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                          <span className="text-primary-foreground font-semibold text-sm">C</span>
+                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center overflow-hidden">
+                          <Image
+                            src={card.reviewer}
+                            alt="Reviewer profile"
+                            width={48}
+                            height={48}
+                            className="rounded-full object-cover"
+                          />
                         </div>
                         <div>
                           <div className="font-semibold text-foreground">Colleague</div>
@@ -98,18 +100,20 @@ const ExperienceTimeline = () => {
 
                     <div className="timeline-card bg-card p-8 rounded-2xl border border-border">
                       <div className="flex items-start gap-4 mb-6">
-                        <Image
-                          src={card.logoPath}
-                          alt={`${card.title} logo`}
-                          width={50}
-                          height={50}
-                          className="rounded-lg object-cover"
-                        />
+                        <div className="w-[70px] h-[70px] rounded-full overflow-hidden">
+                          <Image
+                            src={card.logoPath}
+                            alt={`${card.title} logo`}
+                            width={50}
+                            height={50}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-1">{card.title}</h3>
                           <div className="flex items-center gap-2 text-muted-foreground mb-2">
                             <Building2 size={16} />
-                            <span className="font-medium">Company</span>
+                            <span className="font-medium">{card.institute}</span>
                           </div>
                           <div className="flex flex-col gap-1 text-sm text-muted-foreground">
                             <div className="flex items-center gap-1">
@@ -117,8 +121,8 @@ const ExperienceTimeline = () => {
                               <span>{card.date}</span>
                             </div>
                             <div className="flex items-center gap-1">
-                              <MapPin size={14} />
-                              <span>Remote</span>
+                              <MapPin size={12} />
+                              <span>{card.engType?.join(' • ')}</span>
                             </div>
                           </div>
                         </div>
@@ -153,23 +157,23 @@ const ExperienceTimeline = () => {
                           alt={`${card.title} logo`}
                           width={40}
                           height={40}
-                          className="rounded-lg object-cover"
+                          className="rounded-full object-cover"
                         />
                         <div className="flex-1">
                           <h3 className="text-lg font-bold mb-1">{card.title}</h3>
                           <div className="flex items-center gap-2 text-muted-foreground mb-2">
                             <Building2 size={14} />
-                            <span className="text-sm font-medium">Company</span>
+                            <span className="text-sm font-medium">{card.institute}</span>
                           </div>
                           <div className="flex flex-col gap-1 text-xs text-muted-foreground">
                             <div className="flex items-center gap-1">
                               <Calendar size={12} />
                               <span>{card.date}</span>
                             </div>
-                            <div className="flex items-center gap-1">
-                              <MapPin size={12} />
-                              <span>Remote</span>
-                            </div>
+                          <div className="flex items-center gap-1">
+                            <MapPin size={12} />
+                            <span>{card.engType?.join(' • ')}</span>
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -190,13 +194,18 @@ const ExperienceTimeline = () => {
                     </div>
 
                     <div className="timeline-card bg-primary p-6 rounded-2xl text-primary-foreground">
-                      <Quote className="w-6 h-6 text-muted-foreground mb-3" />
                       <blockquote className="text-sm leading-relaxed mb-4">
                         &ldquo;{card.review}&rdquo;
                       </blockquote>
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-card rounded-full flex items-center justify-center">
-                          <span className="text-foreground font-semibold text-xs">C</span>
+                        <div className="w-8 h-8 bg-card rounded-full flex items-center justify-center overflow-hidden">
+                          <Image
+                            src={card.reviewer}
+                            alt="Reviewer profile"
+                            width={32}
+                            height={32}
+                            className="rounded-full object-cover"
+                          />
                         </div>
                         <div>
                           <div className="font-semibold text-sm">Colleague</div>

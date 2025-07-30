@@ -40,15 +40,14 @@ function ProjectsSection() {
                       <a 
                         className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary focus-visible:text-primary group/link text-base" 
                         href={experience.projectUrl} 
-                        target="_blank" 
                         rel="noreferrer noopener" 
-                        aria-label={`${experience.title} at ${experience.company} (opens in a new tab)`}
+                        aria-label={`${experience.title} at ${experience.domain} (opens in a new tab)`}
                       >
                         <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
                         <span>
                           {experience.title} · {' '}
                           <span className="inline-block">
-                            {experience.company}
+                            {experience.domain}
                             <ExternalLink className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true" />
                           </span>
                         </span>
@@ -103,7 +102,7 @@ function ProjectsSection() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="View full résumé (opens in a new tab)"
+            aria-label="View full résumé"
             className="group inline-flex items-center gap-1 text-base font-semibold text-foreground hover:text-primary focus-visible:text-primary transition-colors"
           >
             View Full <span>Résumé</span>
@@ -134,33 +133,33 @@ export default function Projects() {
           A showcase of the ideas I&apos;ve brought to life — blending creativity, code, and curiosity to solve real problems and explore new technologies.
         </p>
       </motion.div>
-      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+      
+      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-15 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-16">
             <div>
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
                 <Link href="/" className="hover:text-primary transition-colors">
-                  Code & Create
+                  Pixels, Logic & Chaos
                 </Link>
               </h1>
               
               {/* Profile Image */}
               <div className="mt-6 lg:mt-8">
-                <div className="relative w-32 h-32 lg:w-100 lg:h-100">
+                <div className="relative w-32 h-32 lg:w-100 lg:h-100 overflow-hidden rounded-full">
                   <Image
                     src="/images/man1.webp"
                     alt="Profile"
                     width={400}
                     height={400}
-                    className="rounded-full object-cover w-full h-full border-2 border-border hover:border-primary transition-colors duration-300"
+                    className="object-cover w-full h-full rounded-full transition-transform duration-300 hover:scale-110"
                   />
-                  <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </div>
             </div>
             <div className="hidden lg:block">
               <p className="text-sm text-muted-foreground">
-                © 2024 — Crafted with care
+                © 2025 — Designed with care and a bit of caffeine.
               </p>
             </div>
           </header>
