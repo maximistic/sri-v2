@@ -44,7 +44,7 @@ const ContactSection: React.FC = () => {
             <div className="space-y-8 md:space-y-10">
               {/* Email */}
               <div className="flex items-start sm:items-center gap-4 cursor-default">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-foreground">
                   <Mail className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>
@@ -57,7 +57,7 @@ const ContactSection: React.FC = () => {
 
               {/* Location */}
               <div className="flex items-start sm:items-center gap-4 cursor-default">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-muted-foreground">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-foreground">
                   <MapPin className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>

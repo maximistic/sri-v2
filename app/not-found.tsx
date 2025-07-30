@@ -1,23 +1,25 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function NotFound() {
   const router = useRouter();
 
-  useEffect(() => {
-    const handleKeydown = (e: KeyboardEvent) => {
-      const isMac = navigator.platform.toUpperCase().includes('MAC');
-      if ((isMac ? e.metaKey : e.ctrlKey) && e.key.toLowerCase() === 'h') {
+  const handleKeydown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
         e.preventDefault();
         router.push('/');
       }
-    };
+    },
+    [router]
+  );
 
+  useEffect(() => {
     window.addEventListener('keydown', handleKeydown);
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, [router]);
+  }, [handleKeydown]);
 
   return (
     <div className="flex h-screen items-center justify-center bg-zinc-950 text-zinc-100 p-6">
@@ -27,9 +29,17 @@ export default function NotFound() {
           <p className="typing text-zinc-100 text-lg">
             404 — Command not found
           </p>
-          <p className="mt-6 text-zinc-500 text-sm">
-            Try <kbd className="bg-zinc-800 px-2 py-1 rounded border border-zinc-700 text-xs">Ctrl/⌘ + H</kbd> to go back home
-          </p>
+          <div className="mt-6 space-y-2">
+            <p className="text-zinc-500 text-sm">
+              Press <kbd className="bg-zinc-800 px-2 py-1 rounded border border-zinc-700 text-xs">←</kbd> to go back home
+            </p>
+            <button
+              onClick={() => router.push('/')}
+              className="mt-2 inline-block text-sm text-zinc-100 px-4 py-2 border border-zinc-700 rounded hover:bg-zinc-800 transition"
+            >
+              Go back home
+            </button>
+          </div>
         </div>
       </div>
 
