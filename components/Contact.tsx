@@ -1,7 +1,6 @@
 'use client';
 
 import { Mail, MapPin, ArrowUpRight } from 'lucide-react';
-import FlipText from '@/components/ui/FlipText';
 import { BsTwitterX, BsGithub, BsLinkedin } from "react-icons/bs";
 
 const ContactSection: React.FC = () => {
@@ -21,7 +20,7 @@ const ContactSection: React.FC = () => {
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-tight">
                   Let&apos;s Connect
                 </h1>
-                <div className="w-24 sm:w-20 lg:w-40 h-px mx-auto lg:mx-0 bg-border" />
+                <div className="w-24 sm:w-20 lg:w-40 h-px mx-auto lg:mx-0 bg-primary" />
               </div>
               <p className="text-muted-foreground text-lg sm:text-xl md:text-2xl leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Ready to bring your ideas to life? Let&apos;s create something extraordinary together.
@@ -33,7 +32,7 @@ const ContactSection: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-4 bg-primary text-primary-foreground px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full font-medium text-base sm:text-lg hover:bg-primary/90 transition-colors"
                 >
-                  <FlipText text="Start a project" />
+                  Start a Project
                   <ArrowUpRight className="w-5 sm:w-6 h-5 sm:h-6" />
                 </a>
               </div>
@@ -44,7 +43,7 @@ const ContactSection: React.FC = () => {
             <div className="space-y-8 md:space-y-10">
               {/* Email */}
               <div className="flex items-start sm:items-center gap-4 cursor-default">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-foreground">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-primary rounded-full flex items-center justify-center text-foreground">
                   <Mail className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>
@@ -57,7 +56,7 @@ const ContactSection: React.FC = () => {
 
               {/* Location */}
               <div className="flex items-start sm:items-center gap-4 cursor-default">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-border rounded-full flex items-center justify-center text-foreground">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 border border-primary rounded-full flex items-center justify-center text-foreground">
                   <MapPin className="w-5 sm:w-6 h-5 sm:h-6" />
                 </div>
                 <div>
@@ -70,7 +69,7 @@ const ContactSection: React.FC = () => {
 
               {/* Social */}
               <div className="pt-6 sm:pt-8">
-                <div className="text-sm text-muted-foreground mb-4 cursor-default">Follow</div>
+                <div className="text-md text-foreground mb-4 cursor-default">Follow</div>
                 <div className="flex gap-6 sm:gap-8">
                   <a
                     href="https://www.linkedin.com/in/srikailaashkumar-s/"

@@ -48,7 +48,6 @@ export default function HeroSection() {
       id="home"
       className="relative w-full min-h-screen bg-background text-foreground px-6 sm:px-10 flex items-center justify-center overflow-hidden"
     >
-      {/* Floating background dots */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="w-full h-full bg-dot-pattern opacity-10"></div>
       </div>
@@ -66,8 +65,7 @@ export default function HeroSection() {
           ref={subRef}
           className="text-muted-foreground mt-6 text-lg sm:text-xl max-w-xl leading-relaxed"
         >
-          I design and develop modern web interfaces that are clean, intuitive,
-          and impactful.
+          I design and develop modern web interfaces that are clean and intuitive.
         </p>
 
         <div
