@@ -1,227 +1,81 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
+import { motion, useScroll } from 'framer-motion';
 import Image from 'next/image';
 import { expCards } from '@/lib';
-import { MapPin, Calendar, Building2 } from 'lucide-react';
+import SectionHeading from './ui/SectionHeading';
 
-gsap.registerPlugin(ScrollTrigger);
+const entries = expCards.filter((c) => c.title !== 'coming up');
 
-const ExperienceTimeline = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const timelineProgress = useTransform(scrollYProgress, [0.1, 0.9], ['0%', '100%']);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.timeline-card').forEach((card) => {
-        gsap.fromTo(
-          card,
-          { y: 60, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+export default function Experience() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 70%', 'end 60%'] });
 
   return (
-    <section id="experience" className="py-20 md:py-32 bg-background text-foreground" ref={containerRef}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <div className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-2xl mb-4">
-            My Story So Far
-          </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From Classrooms to Codebases: A look at the Moments and Milestones
-          </p>
-        </motion.div>
+    <section id="experience" className="px-6 py-28 sm:px-10 md:py-40">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading index="01" label="Experience">
+          Story <em>so far.</em>
+        </SectionHeading>
 
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-border hidden lg:block">
-            <motion.div className="w-full bg-primary origin-top" style={{ height: timelineProgress }} />
+        <div ref={ref} className="relative">
+          {/* the line draws itself as you scroll */}
+          <div className="absolute bottom-0 left-0 top-0 w-px bg-border md:left-[220px]">
+            <motion.div className="h-full origin-top bg-primary" style={{ scaleY: scrollYProgress }} />
           </div>
 
-          <div className="absolute left-8 w-px h-full bg-border lg:hidden">
-            <motion.div className="w-full bg-primary origin-top" style={{ height: timelineProgress }} />
-          </div>
+          <ol className="space-y-20">
+            {entries.map((card) => (
+              <motion.li
+                key={card.title}
+                className="relative grid gap-4 pl-8 md:grid-cols-[220px_1fr] md:gap-16 md:pl-0"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-10% 0px' }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className="absolute -left-[5px] top-2 h-[11px] w-[11px] rounded-full bg-primary ring-4 ring-background md:left-[215px]" />
 
-          <div className="space-y-16 md:space-y-24">
-            {expCards.map((card, index) => (
-              <div key={card.title + index} className="relative">
-                {/* Desktop Layout */}
-                <div className="hidden lg:block">
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10"></div>
-
-                  <div className="grid grid-cols-2 gap-16 items-center">
-                    <div className="timeline-card bg-card p-8 rounded-2xl border border-border">
-                      <blockquote className="text-muted-foreground text-lg leading-relaxed mb-6">
-                        &ldquo;{card.review}&rdquo;
-                      </blockquote>
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center overflow-hidden">
-                          <Image
-                            src={card.reviewer}
-                            alt="Reviewer profile"
-                            width={48}
-                            height={48}
-                            className="rounded-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <div className="font-semibold text-foreground">Colleague</div>
-                          <div className="text-sm text-muted-foreground">Team Member</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="timeline-card bg-card p-8 rounded-2xl border border-border">
-                      <div className="flex items-start gap-4 mb-6">
-                        <div className="w-[70px] h-[70px] rounded-full overflow-hidden">
-                          <Image
-                            src={card.logoPath}
-                            alt={`${card.title} logo`}
-                            width={50}
-                            height={50}
-                            className="object-cover w-full h-full"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-bold mb-1">{card.title}</h3>
-                          <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                            <Building2 size={16} />
-                            <span className="font-medium">{card.institute}</span>
-                          </div>
-                          <div className="flex flex-col gap-1 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-1">
-                              <Calendar size={14} />
-                              <span>{card.date}</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <MapPin size={12} />
-                              <span>{card.engType?.join(' • ')}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="font-semibold mb-3">Key Responsibilities</h4>
-                          <ul className="space-y-2">
-                            {card.responsibilities.slice(0, 3).map((responsibility, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                <span className="text-foreground mt-1">•</span>
-                                <span>{responsibility}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="pr-10 font-mono text-xs uppercase leading-relaxed tracking-widest text-muted-foreground md:text-right">
+                  <div className="text-foreground">{card.date}</div>
+                  <div className="mt-1">{card.engType?.join(' · ')}</div>
                 </div>
 
-                {/* Mobile Layout */}
-                <div className="lg:hidden flex gap-6">
-                  <div className="w-4 h-4 bg-primary rounded-full border-4 border-background flex-shrink-0"></div>
-
-                  <div className="flex-1 space-y-6">
-                    <div className="timeline-card bg-card p-6 rounded-2xl border border-border">
-                      <div className="flex items-start gap-3 mb-4">
-                        <Image
-                          src={card.logoPath}
-                          alt={`${card.title} logo`}
-                          width={40}
-                          height={40}
-                          className="rounded-full object-cover"
-                        />
-                        <div className="flex-1">
-                          <h3 className="text-lg font-bold mb-1">{card.title}</h3>
-                          <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                            <Building2 size={14} />
-                            <span className="text-sm font-medium">{card.institute}</span>
-                          </div>
-                          <div className="flex flex-col gap-1 text-xs text-muted-foreground">
-                            <div className="flex items-center gap-1">
-                              <Calendar size={12} />
-                              <span>{card.date}</span>
-                            </div>
-                          <div className="flex items-center gap-1">
-                            <MapPin size={12} />
-                            <span>{card.engType?.join(' • ')}</span>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3">
-                        <div>
-                          <h4 className="font-semibold mb-2 text-sm">Key Responsibilities</h4>
-                          <ul className="space-y-1">
-                            {card.responsibilities.slice(0, 2).map((responsibility, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-xs text-muted-foreground">
-                                <span className="text-foreground mt-1">•</span>
-                                <span>{responsibility}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="timeline-card bg-primary p-6 rounded-2xl text-primary-foreground">
-                      <blockquote className="text-sm leading-relaxed mb-4">
-                        &ldquo;{card.review}&rdquo;
-                      </blockquote>
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-card rounded-full flex items-center justify-center overflow-hidden">
-                          <Image
-                            src={card.reviewer}
-                            alt="Reviewer profile"
-                            width={32}
-                            height={32}
-                            className="rounded-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <div className="font-semibold text-sm">Colleague</div>
-                          <div className="text-xs text-muted-foreground">Team Member</div>
-                        </div>
-                      </div>
-                    </div>
+                <div className="md:pl-10">
+                  <h3 className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl">{card.title}</h3>
+                  <div className="mt-4 flex items-center gap-3 text-muted-foreground">
+                    <Image
+                      src={card.logoPath}
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 rounded-full object-cover"
+                    />
+                    <span className="font-serif text-xl italic">{card.institute}</span>
                   </div>
+                  <ul className="mt-8 space-y-3">
+                    {card.responsibilities.map((r) => (
+                      <li key={r} className="flex gap-3 text-muted-foreground">
+                        <span className="font-mono text-primary">›</span>
+                        <span>{r}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+              </motion.li>
             ))}
-          </div>
+
+            <li className="relative pl-8 md:grid md:grid-cols-[220px_1fr] md:gap-16 md:pl-0">
+              <span className="absolute -left-[5px] top-1 h-[11px] w-[11px] rounded-full border border-primary bg-background md:left-[215px]" />
+              <span />
+              <p className="font-mono text-sm text-muted-foreground md:pl-10">
+                next entry pending<span className="ml-1 text-primary" style={{ animation: 'blink 1s steps(1) infinite' }}>▍</span>
+              </p>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
   );
-};
-
-export default ExperienceTimeline;
+}

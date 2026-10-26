@@ -13,7 +13,7 @@ interface MenuLink {
 }
 
 const menuLinks: MenuLink[] = [
-  { path: "#", label: "Home" },
+  { path: "#home", label: "Home" },
   { path: "#experience", label: "Experience" },
   { path: "#projects", label: "Projects" },
   { path: "#certificates", label: "Certificates" },

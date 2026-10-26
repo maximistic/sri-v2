@@ -42,9 +42,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           }, 500);
           return 100;
         }
-        return prev + 2;
+        return Math.min(prev + 3, 100);
       });
-    }, 50);
+    }, 35);
 
     return () => clearInterval(timer);
   }, [onComplete]);
@@ -100,7 +100,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="fixed top-0 left-0 w-full h-full bg-black-300 z-[99] flex items-center justify-center"
+      className="fixed top-0 left-0 w-full h-full bg-[#0d0b09] z-[99] flex items-center justify-center"
     >
       {dimension.width > 0 && (
         <>
@@ -112,10 +112,10 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           >
             <motion.div
               variants={itemVariants}
-              className="w-64 h-1 bg-slate-700 rounded-full overflow-hidden relative"
+              className="w-64 h-px bg-white/15 overflow-hidden relative"
             >
               <motion.div
-                className="h-full bg-slate-300 rounded-full"
+                className="h-full bg-primary"
                 initial={{ width: '0%' }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.1 }}
@@ -130,7 +130,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
 
             <motion.div
               variants={itemVariants}
-              className="text-slate-300 text-3xl font-mono"
+              className="text-primary text-5xl font-mono tabular-nums"
             >
               {progress}%
             </motion.div>
@@ -141,15 +141,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
               variants={curve}
               initial="initial"
               exit="exit"
-              fill="url(#gradient)"
+              fill="#0d0b09"
             />
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#000" />
-                <stop offset="50%" stopColor="#000" />
-                <stop offset="100%" stopColor="#000" />
-              </linearGradient>
-            </defs>
           </svg>
         </>
       )}

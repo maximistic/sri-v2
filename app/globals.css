@@ -18,6 +18,9 @@ html::-webkit-scrollbar {
 
 
 @theme inline {
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -57,48 +60,48 @@ html::-webkit-scrollbar {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.98 0.01 100);            
-  --foreground: oklch(0.28 0.02 25);             
-  --card: oklch(0.94 0.02 85);                   
+  --background: oklch(0.97 0.012 85);
+  --foreground: oklch(0.19 0.01 60);
+  --card: oklch(0.94 0.014 85);
   --card-foreground: var(--foreground);
-  --popover: oklch(0.94 0.02 85);
+  --popover: oklch(0.95 0.012 85);
   --popover-foreground: var(--foreground);
-  --primary: oklch(35.697% 0.085 51.837 / 0.943);                
-  --primary-foreground: oklch(0.98 0.01 100);     
-  --secondary: oklch(0.86 0.035 75);
+  --primary: oklch(0.6 0.2 42);
+  --primary-foreground: oklch(0.16 0.01 60);
+  --secondary: oklch(0.92 0.016 85);
   --secondary-foreground: var(--foreground);
-  --muted: oklch(0.94 0.02 85);
-  --muted-foreground: oklch(0.45 0.015 30);       
-  --accent: oklch(0.82 0.08 80);
+  --muted: oklch(0.93 0.014 85);
+  --muted-foreground: oklch(0.45 0.015 60);
+  --accent: oklch(0.92 0.016 85);
   --accent-foreground: var(--foreground);
-  --destructive: oklch(0.6 0.16 27);              
-  --border: oklch(0.9 0.015 90);
-  --input: oklch(0.92 0.01 90);
-  --ring: oklch(0.6 0.05 60);
+  --destructive: oklch(0.6 0.16 27);
+  --border: oklch(0.86 0.016 85);
+  --input: oklch(0.88 0.014 85);
+  --ring: oklch(0.6 0.2 42);
+  --grain-opacity: 0.07;
 }
-
 
 .dark {
-  --background: oklch(0.2 0.01 30);                
-  --foreground: oklch(0.95 0.01 100);             
-  --card: oklch(0.24 0.015 30);
+  --background: oklch(0.15 0.008 60);
+  --foreground: oklch(0.94 0.01 85);
+  --card: oklch(0.19 0.009 60);
   --card-foreground: var(--foreground);
-  --popover: oklch(0.24 0.015 30);
+  --popover: oklch(0.2 0.009 60);
   --popover-foreground: var(--foreground);
-  --primary: oklch(0.78 0.12 125);               
-  --primary-foreground: oklch(0.2 0.01 30);
-  --secondary: oklch(0.32 0.03 60);               
+  --primary: oklch(0.72 0.19 45);
+  --primary-foreground: oklch(0.15 0.008 60);
+  --secondary: oklch(0.22 0.01 60);
   --secondary-foreground: var(--foreground);
-  --muted: oklch(0.3 0.015 80);
-  --muted-foreground: oklch(0.7 0.02 100);
-  --accent: var(--secondary);
-  --accent-foreground: var(--secondary-foreground);
-  --destructive: oklch(0.48 0.18 27);             
-  --border: oklch(0.3 0.01 50);
-  --input: oklch(0.3 0.01 50);
-  --ring: oklch(0.6 0.05 120);
+  --muted: oklch(0.24 0.01 60);
+  --muted-foreground: oklch(0.68 0.015 80);
+  --accent: oklch(0.24 0.01 60);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.55 0.18 27);
+  --border: oklch(0.28 0.01 60);
+  --input: oklch(0.28 0.01 60);
+  --ring: oklch(0.72 0.19 45);
+  --grain-opacity: 0.05;
 }
-
 
 @layer base {
   * {
@@ -107,4 +110,51 @@ html::-webkit-scrollbar {
   body {
     @apply bg-background text-foreground;
     }
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* film grain over everything, keeps flat colour from looking digital */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* theme switch: circular reveal from the click point (see ModeToggle) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 45s linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
 }

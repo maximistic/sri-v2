@@ -1,174 +1,83 @@
 'use client';
 
-import { ExternalLink } from 'lucide-react';
-import { useState } from 'react';
-import Link from 'next/link';
-import { projects } from '@/lib';
-import Image from 'next/image';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { projects } from '@/lib';
+import SectionHeading from './ui/SectionHeading';
 
-function ProjectsSection() {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-
+export default function Projects() {
   return (
-    <section 
-      id="projects" 
-      className="mb-12 scroll-mt-16 md:mb-16 lg:mb-24 lg:scroll-mt-24" 
-      aria-label="Work experience"
-    >
-      <div>
-        <ol className="group/list">
-          {projects.map((experience) => (
-            <li key={experience.id} className="mb-12">
-              <div 
-                className={`group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 ${
-                  hoveredId && hoveredId !== experience.id ? 'lg:opacity-50' : ''
-                } lg:group-hover/list:opacity-50`}
-                onMouseEnter={() => setHoveredId(experience.id)}
-                onMouseLeave={() => setHoveredId(null)}
-              >
-                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-card/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
-                <header 
-                  className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-2" 
-                  aria-label={experience.dateLabel}
-                >
-                  {experience.dateRange}
-                </header>
-                <div className="z-10 sm:col-span-6">
-                  <h3 className="font-medium leading-snug text-foreground">
-                    <div>
-                      <a 
-                        className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary focus-visible:text-primary group/link text-base" 
-                        href={experience.projectUrl} 
-                        rel="noreferrer noopener" 
-                        aria-label={`${experience.title} at ${experience.domain} (opens in a new tab)`}
-                      >
-                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
-                        <span>
-                          {experience.title} · {' '}
-                          <span className="inline-block">
-                            {experience.domain}
-                            <ExternalLink className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true" />
-                          </span>
-                        </span>
-                      </a>
-                    </div>
-                    {experience.positions && experience.positions.map((position, index) => (
-                      <div key={index}>
-                        <div className="text-muted-foreground" aria-hidden="true">
-                          {position}
-                        </div>
-                      </div>
-                    ))}
-                  </h3>
+    <section id="projects" className="px-6 py-28 sm:px-10 md:py-40">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading index="02" label="Projects">
+          Pixels, logic <em>&amp; chaos.</em>
+        </SectionHeading>
 
-                  <p className="mt-2 text-sm leading-normal text-muted-foreground">
-                    {experience.description}
+        {/* hovering one row dims the rest */}
+        <ol className="group/list border-b border-border">
+          {projects.map((p, i) => (
+            <motion.li
+              key={p.id}
+              className="group border-t border-border transition-opacity duration-300 group-hover/list:opacity-35 hover:opacity-100!"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-5% 0px' }}
+              transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <a
+                href={p.projectUrl}
+                className="grid items-baseline gap-4 py-8 md:grid-cols-12 md:gap-8 md:py-10"
+                aria-label={`${p.title} (${p.domain})`}
+              >
+                <span className="font-mono text-sm text-primary md:col-span-1">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+
+                <div className="md:col-span-6">
+                  <h3 className="flex items-center gap-3 text-3xl font-semibold tracking-tight transition-transform duration-500 ease-out group-hover:translate-x-3 md:text-5xl">
+                    {p.title}
+                    <ArrowUpRight className="h-7 w-7 text-primary opacity-0 transition-all duration-500 group-hover:opacity-100 md:h-9 md:w-9" />
+                  </h3>
+                  <p className="mt-3 text-muted-foreground transition-transform duration-500 ease-out group-hover:translate-x-3">
+                    <span className="font-serif text-lg italic">{p.domain}</span> — {p.description}
                   </p>
-                  {experience.links && (
-                    <ul className="mt-2 flex flex-wrap" aria-label="Related links">
-                      {experience.links.map((link, index) => (
-                        <li key={index} className="mr-4">
-                          <a 
-                            className="relative mt-2 inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary focus-visible:text-primary" 
-                            href={link.url} 
-                            target="_blank" 
-                            rel="noreferrer noopener" 
-                            aria-label={`${link.label} (opens in a new tab)`}
-                          >
-                            <ExternalLink className="mr-1 h-3 w-3" aria-hidden="true" />
-                            <span>{link.label}</span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                    {experience.technologies.map((tech, index) => (
-                      <li key={index} className="mr-1.5 mt-2">
-                        <div className="flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium leading-5 text-primary">
-                          {tech}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              </div>
-            </li>
+
+                <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-muted-foreground md:col-span-3">
+                  {p.technologies.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground md:col-span-2 md:text-right">
+                  {p.dateRange}
+                </span>
+              </a>
+            </motion.li>
           ))}
         </ol>
-        <div className="mt-12">
+
+        <div className="mt-12 flex flex-wrap items-center gap-8 font-mono text-xs uppercase tracking-widest">
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="View full résumé"
-            className="group inline-flex items-center gap-1 text-base font-semibold text-foreground hover:text-primary focus-visible:text-primary transition-colors"
+            className="group inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary"
           >
-            View Full <span>Résumé</span>
-            <ExternalLink
-              className="h-4 w-4 transform transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-focus-visible:-translate-y-0.5 group-focus-visible:translate-x-0.5 motion-reduce:transform-none"
-              aria-hidden="true"
-            />
+            Résumé
+            <ExternalLink className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="https://github.com/maximistic"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary"
+          >
+            All code on GitHub
+            <ExternalLink className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>
     </section>
-  );
-}
-
-export default function Projects() {
-  return (
-    <div className="bg-background leading-relaxed text-muted-foreground antialiased selection:bg-primary selection:text-primary-foreground">
-            <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-20"
-      >
-        <div className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-2xl mb-4">
-          Projects & Builds
-        </div>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          A showcase of the ideas I&apos;ve brought to life — blending creativity, code, and curiosity to solve real problems and explore new technologies.
-        </p>
-      </motion.div>
-      
-      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-15 lg:py-0">
-        <div className="lg:flex lg:justify-between lg:gap-4">
-          <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-16">
-            <div>
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                <Link href="/" className="hover:text-primary transition-colors">
-                  Pixels, Logic & Chaos
-                </Link>
-              </h1>
-              
-              {/* Profile Image */}
-              <div className="mt-6 lg:mt-8">
-                <div className="relative w-32 h-32 lg:w-100 lg:h-100 overflow-hidden rounded-full">
-                  <Image
-                    src="/images/man1.webp"
-                    alt="Profile"
-                    width={400}
-                    height={400}
-                    className="object-cover w-full h-full rounded-full transition-transform duration-300 hover:scale-110"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="hidden lg:block">
-              <p className="text-sm text-muted-foreground">
-                © 2025 — Designed with care and a bit of caffeine.
-              </p>
-            </div>
-          </header>
-
-          <main id="content" className="pt-16 lg:w-1/2 lg:py-16">
-            <ProjectsSection />
-          </main>
-        </div>
-      </div>
-    </div>
   );
 }

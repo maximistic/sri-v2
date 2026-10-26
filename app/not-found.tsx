@@ -22,20 +22,20 @@ export default function NotFound() {
   }, [handleKeydown]);
 
   return (
-    <div className="flex h-screen items-center justify-center bg-zinc-950 text-zinc-100 p-6">
+    <div className="flex h-screen items-center justify-center bg-background text-foreground p-6">
       <div className="max-w-md w-full">
-        <div className="bg-zinc-900 border border-zinc-700 p-6 rounded-lg shadow-lg font-mono">
-          <p className="text-green-400 mb-4 text-sm">sri@portfolio:~$</p>
-          <p className="typing text-zinc-100 text-lg">
+        <div className="bg-card border border-border p-6 rounded-lg shadow-lg font-mono">
+          <p className="text-primary mb-4 text-sm">sri@portfolio:~$</p>
+          <p className="typing text-foreground text-lg">
             404 — Command not found
           </p>
           <div className="mt-6 space-y-2">
-            <p className="text-zinc-500 text-sm">
-              Press <kbd className="bg-zinc-800 px-2 py-1 rounded border border-zinc-700 text-xs">←</kbd> to go back home
+            <p className="text-muted-foreground text-sm">
+              Press <kbd className="bg-muted px-2 py-1 rounded border border-border text-xs">←</kbd> to go back home
             </p>
             <button
               onClick={() => router.push('/')}
-              className="mt-2 inline-block text-sm text-zinc-100 px-4 py-2 border border-zinc-700 rounded hover:bg-zinc-800 transition"
+              className="mt-2 inline-block text-sm text-foreground px-4 py-2 border border-border rounded hover:bg-muted transition"
             >
               Go back home
             </button>
@@ -48,7 +48,7 @@ export default function NotFound() {
           width: 0;
           white-space: nowrap;
           overflow: hidden;
-          border-right: 2px solid #e4e4e7;
+          border-right: 2px solid var(--foreground);
           animation: typing 2s steps(30, end) forwards, blink 0.8s step-end infinite;
         }
 
@@ -67,7 +67,7 @@ export default function NotFound() {
             border-color: transparent;
           }
           50% {
-            border-color: #e4e4e7;
+            border-color: var(--foreground);
           }
         }
       `}</style>

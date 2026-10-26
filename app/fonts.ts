@@ -1,27 +1,21 @@
-import { Unbounded, Syne, Bebas_Neue, Lora, Space_Grotesk } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 
-export const unbounded = Unbounded({
+export const display = Bricolage_Grotesque({
     subsets: ["latin"],
     display: "swap",
+    variable: "--font-bricolage",
 })
 
-export const syne = Syne({
-    subsets: ["latin"],
-    display: "swap",
-})
-
-export const lora = Lora({
-    subsets: ["latin"],
-    display: "swap",
-})
-
-export const bebasNeue = Bebas_Neue({
+export const serif = Instrument_Serif({
     weight: "400",
+    style: ["normal", "italic"],
     subsets: ["latin"],
     display: "swap",
+    variable: "--font-instrument",
 })
 
-export const spaceGrotesk = Space_Grotesk({
+export const mono = JetBrains_Mono({
     subsets: ["latin"],
     display: "swap",
+    variable: "--font-jetbrains",
 })
